@@ -21,7 +21,12 @@ export default function addLocation() {
   return (
     <>
       <h1>Add location</h1>
-      <button onClick={handleSubmit}>map data</button>
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        find
+      </button>
     </>
   );
 }

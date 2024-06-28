@@ -1,7 +1,23 @@
 import { NextResponse, NextRequest } from "next/server";
-import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "../../../../lib/prisma";
 
-export async function POST(request: NextRequest, response: NextApiResponse) {
+export async function POST(request: NextRequest, response: NextResponse) {
   const res = await request.json();
-  return NextResponse.json({ data: res });
+  const { nodeID, latitude, longitude, time, temp, humidity, battery, health } =
+    res;
+  console.log({ res });
+
+  const result = await prisma.data.create({
+    data: {
+      nodeID,
+      latitude,
+      longitude,
+      time,
+      temp,
+      humidity,
+      battery,
+      health,
+    },
+  });
+  return NextResponse.json({ result });
 }
