@@ -6,7 +6,7 @@ import sensorData from "../sensor-data.json";
 import Collections from "../components/Collections";
 
 export default function addLocation() {
-  const router = useRouter();
+  //   const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
