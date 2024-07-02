@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import sensorData from "../sensor-data.json";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import Collections from "../components/Collections";
 
 export default function addLocation() {
@@ -17,7 +17,7 @@ export default function addLocation() {
         },
         body: JSON.stringify(sensorData),
       });
-      router.refresh();
+      //   router.refresh();
     } catch (error) {
       console.log(error);
     }
