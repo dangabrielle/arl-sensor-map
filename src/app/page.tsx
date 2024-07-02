@@ -1,32 +1,44 @@
-import React from "react";
-import prisma from "../../lib/prisma";
-import Data from "./components/Data";
-import Link from "next/link";
+"use client";
 
-async function getData() {
-  const data = await prisma.data.findMany({
-    where: { nodeID: "node 1" },
-  });
-  return data;
-}
+import { useEffect, useState } from "react";
+import { socket } from "../socket";
 
-export default async function Home() {
-  const data = await getData();
-  console.log(data);
+export default function Home() {
+  const [isConnected, setIsConnected] = useState(false);
+  const [transport, setTransport] = useState("N/A");
+
+  useEffect(() => {
+    if (socket.connected) {
+      onConnect();
+    }
+
+    function onConnect() {
+      setIsConnected(true);
+      setTransport(socket.io.engine.transport.name);
+
+      socket.io.engine.on("upgrade", (transport) => {
+        setTransport(transport.name);
+      });
+    }
+
+    function onDisconnect() {
+      setIsConnected(false);
+      setTransport("N/A");
+    }
+
+    socket.on("connect", onConnect);
+    socket.on("disconnect", onDisconnect);
+
+    return () => {
+      socket.off("connect", onConnect);
+      socket.off("disconnect", onDisconnect);
+    };
+  }, []);
+
   return (
-    <>
-      <h1>Feed</h1>
-      <Link href={"/add-location"}>Add Location</Link>
-      {data.map((entry) => {
-        return (
-          <Data
-            key={entry.nodeID}
-            nodeID={entry.nodeID}
-            latitude={entry.latitude}
-            longitude={entry.longitude}
-          />
-        );
-      })}
-    </>
+    <div>
+      <p>Status: {isConnected ? "connected" : "disconnected"}</p>
+      <p>Transport: {transport}</p>
+    </div>
   );
 }

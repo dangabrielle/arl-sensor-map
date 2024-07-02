@@ -5,7 +5,7 @@ type DataProps = {
   latitude: Decimal;
 };
 
-export default function Data({ nodeID, longitude, latitude }: DataProps) {
+export default async function Data({ nodeID, longitude, latitude }: DataProps) {
   return (
     <div>
       <h3>{nodeID}</h3>

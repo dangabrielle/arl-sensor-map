@@ -2,22 +2,27 @@
 
 import { useState } from "react";
 import sensorData from "../sensor-data.json";
+import { useRouter } from "next/navigation";
+import Collections from "../components/Collections";
 
 export default function addLocation() {
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      fetch("/api/add-location", {
+      await fetch("/api/add-location", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(sensorData),
       });
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <>
       <h1>Add location</h1>
@@ -27,6 +32,7 @@ export default function addLocation() {
       >
         find
       </button>
+      {/* <Collections /> */}
     </>
   );
 }
