@@ -16,11 +16,6 @@ export default function Home() {
 
     function onConnect() {
       setIsConnected(true);
-      setTransport(socket.io.engine.transport.name);
-
-      socket.io.engine.on("upgrade", (transport) => {
-        setTransport(transport.name);
-      });
     }
 
     function onDisconnect() {
@@ -28,7 +23,10 @@ export default function Home() {
       setTransport("N/A");
     }
 
-    socket.on("connect", onConnect);
+    socket.on("connect", () => {
+      console.log("connected to server");
+      setIsConnected(true);
+    });
     socket.on("disconnect", onDisconnect);
 
     return () => {
@@ -45,13 +43,13 @@ export default function Home() {
   });
 
   const sendMessage = () => {
-    socket.emit("message", { sensorData });
+    socket.emit("msg", { sensorData });
   };
 
   return (
     <div>
-      <p>Status: {isConnected ? "connected" : "disconnected"}</p>
-      <p>Transport: {transport}</p>
+      <p>Websocket Status: {isConnected ? "connected" : "disconnected"}</p>
+
       <button
         onClick={sendMessage}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
