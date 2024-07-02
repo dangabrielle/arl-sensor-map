@@ -15,7 +15,15 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   io.on("connection", (socket) => {
-    // ...
+    console.log("user connected");
+    socket.on("message", (msg) => {
+      console.log("Message from client:", msg);
+      const responseData = { message: "hello from server", dataReceived: msg };
+      socket.emit("message", responseData);
+    });
+    socket.on("disconnect", () => {
+      console.log("user disconnected");
+    });
   });
 
   httpServer
