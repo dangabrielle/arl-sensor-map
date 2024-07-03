@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { socket } from "../socket";
-import sensorData from "../app/sensor-data.json";
+import sensorData from "../../sensor-data.json";
+import Collections from "./components/Collections";
 
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
@@ -57,6 +58,7 @@ export default function Home() {
         Send
       </button>
       <pre>{JSON.stringify(receivedMessage, null, 2)}</pre>
+      {/* <Collections /> */}
     </div>
   );
 }

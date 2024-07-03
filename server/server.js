@@ -2,7 +2,16 @@ const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
 const cors = require("cors");
+const dotenv = require("dotenv");
+// const prisma = require("../lib/prisma");
 
+dotenv.config();
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+// const prisma = require("../lib/prisma");
+
+// import { userAgent } from "next/server";
+const sensorData = require("../sensor-data.json");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -14,6 +23,29 @@ const io = socketIo(server, {
 });
 
 app.use(cors());
+
+async function main() {
+  try {
+    const result = await prisma.data.create({
+      data: {
+        nodeID: sensorData.nodeID,
+        latitude: sensorData.latitude,
+        longitude: sensorData.longitude,
+        time: sensorData.time,
+        temp: sensorData.temp,
+        humidity: sensorData.humidity,
+        battery: sensorData.battery,
+        health: sensorData.health,
+      },
+    });
+    // res.status(201).json(result);
+    console.log(result);
+  } catch (err) {
+    console.log("error creating user", err);
+  }
+}
+
+main();
 
 io.on("connection", (socket) => {
   console.log("a user connected");

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import sensorData from "../sensor-data.json";
+import sensorData from "../../../sensor-data.json";
 // import { useRouter } from "next/navigation";
 import Collections from "../components/Collections";
 

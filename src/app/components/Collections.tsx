@@ -1,6 +1,6 @@
 import prisma from "../../../lib/prisma";
 import Data from "./Data";
-import sensorData from "../sensor-data.json";
+import sensorData from "../../../sensor-data.json";
 
 async function getData() {
   const data = await prisma.data.findMany({
