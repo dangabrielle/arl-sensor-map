@@ -3,12 +3,41 @@ const http = require("http");
 const socketIo = require("socket.io");
 const cors = require("cors");
 const dotenv = require("dotenv");
-// const prisma = require("../lib/prisma");
+const mqtt = require("mqtt");
 
-dotenv.config();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-// const prisma = require("../lib/prisma");
+
+const protocol = "mqtt";
+const host = "broker.emqx.io";
+const port = "1883";
+const clientId = `mqtt_${Math.random().toString(16).slice(3)}`;
+
+const connectUrl = `${protocol}://${host}:${port}`;
+
+const client = mqtt.connect(connectUrl, {
+  clientId,
+  clean: true,
+  connectTimeout: 4000,
+  username: "emqx",
+  password: "public",
+  reconnectPeriod: 1000,
+});
+
+const topic = "/node/mqtt";
+
+client.on("connect", () => {
+  console.log("Connected");
+  client.subscribe(topic, () => {
+    console.log(`Subscribe to topic ${topic}`);
+  });
+});
+
+client.on("message", (topic, payload) => {
+  console.log("Received Message:", topic, payload.toString());
+});
+
+dotenv.config();
 
 // import { userAgent } from "next/server";
 const sensorData = require("../sensor-data.json");
@@ -45,7 +74,7 @@ async function main() {
   }
 }
 
-main();
+// main();
 
 io.on("connection", (socket) => {
   console.log("a user connected");
