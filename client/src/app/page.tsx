@@ -4,6 +4,16 @@ import Data from "../app/components/Data";
 
 import { useEffect, useState } from "react";
 import { socket } from "../../src/socket";
+type SensorData = {
+  nodeID: string;
+  latitude: number;
+  longitude: number;
+  time: string;
+  temp: number;
+  humidity: number;
+  battery: number;
+  health: string;
+};
 
 // async function getData() {
 //   const data = await prisma.data.findMany({
@@ -12,63 +22,57 @@ import { socket } from "../../src/socket";
 //   return data;
 // }
 
-export default function Collections() {
-  // const data = await getData();
+const HomePage = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
-  const [receivedMessage, setReceivedMessage] = useState({});
+  const [sensorData, setSensorData] = useState<SensorData[]>([]);
 
   useEffect(() => {
-    if (socket.connected) {
-      onConnect();
-    }
-
-    function onConnect() {
+    const onConnect = () => {
       setIsConnected(true);
-    }
+      setTransport(socket.io.engine.transport.name);
+      console.log("Connected to server");
+    };
 
-    function onDisconnect() {
+    const onDisconnect = () => {
       setIsConnected(false);
       setTransport("N/A");
-    }
+      console.log("Disconnected from server");
+    };
 
-    socket.on("connect", () => {
-      console.log("connected to server");
-      setIsConnected(true);
-    });
+    const onNewSensorData = (data: SensorData) => {
+      console.log("Received new sensor data:", data);
+      setSensorData((prevData) => [...prevData, data]);
+    };
+
+    socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
+    socket.on("newSensorData", onNewSensorData);
 
     return () => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
+      socket.off("newSensorData", onNewSensorData);
     };
   }, []);
 
-  useEffect(() => {
-    socket.on("newSensorData", (nodeData) => {
-      console.log("Receiced data", nodeData);
-      setReceivedMessage(nodeData);
-    });
-  });
-
-  // const sendMessage = () => {
-  //   socket.emit("msg", { sensorData });
-  // };
   return (
-    <>
-      {/* {data.map((entry) => {
-        return (
-          <Data
-            key={entry.nodeID}
-            nodeID={entry.nodeID}
-            latitude={entry.latitude}
-            longitude={entry.longitude}
-          />
-        );
-      })} */}
-
-      <p>Websocket Status: {isConnected ? "connected" : "disconnected"}</p>
-      <p>{JSON.stringify(receivedMessage)}</p>
-    </>
+    <div>
+      <h1>Real-Time Sensor Data</h1>
+      <p>Connection status: {isConnected ? "Connected" : "Disconnected"}</p>
+      <p>Transport: {transport}</p>
+      <ul>
+        {sensorData.map((data, index) => (
+          <li key={index}>
+            Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
+            {data.humidity}, Latitude: {data.latitude}, Longitude:{" "}
+            {data.longitude}, Time: {data.time}, Battery: {data.battery},
+            Health: {data.health}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
-}
+};
+
+export default HomePage;

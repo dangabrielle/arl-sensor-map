@@ -46,6 +46,14 @@ client.on("connect", () => {
   });
 });
 
+io.on("connection", (socket) => {
+  console.log("Websocket client connected");
+
+  socket.on("disconnect", () => {
+    console.log("Websocket client disconnected");
+  });
+});
+
 client.on("message", async (topic, payload) => {
   console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
@@ -63,20 +71,7 @@ client.on("message", async (topic, payload) => {
   }
 
   io.emit("newSensorData", result);
-});
-
-io.on("connection", (socket) => {
-  console.log("Websocket client connected");
-
-  socket.on("msg", (data) => {
-    console.log("Received JSON data from client:", data);
-    const responseData = { message: "Hello from server", dataReceived: data };
-    socket.emit("message", responseData);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("Websocket client disconnected");
-  });
+  console.log("data emitted to websocket client");
 });
 
 app.get("/", (req, res) => {
