@@ -12,17 +12,6 @@ exports.id = "app/page";
 exports.ids = ["app/page"];
 exports.modules = {
 
-/***/ "@prisma/client":
-/*!*********************************!*\
-  !*** external "@prisma/client" ***!
-  \*********************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("@prisma/client");
-
-/***/ }),
-
 /***/ "./action-async-storage.external":
 /*!****************************************************************************!*\
   !*** external "next/dist/client/components/action-async-storage.external" ***!
@@ -100,6 +89,182 @@ module.exports = require("next/dist/compiled/next-server/app-page.runtime.dev.js
 
 /***/ }),
 
+/***/ "buffer":
+/*!*************************!*\
+  !*** external "buffer" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("buffer");
+
+/***/ }),
+
+/***/ "child_process":
+/*!********************************!*\
+  !*** external "child_process" ***!
+  \********************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
+
+/***/ }),
+
+/***/ "crypto":
+/*!*************************!*\
+  !*** external "crypto" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("crypto");
+
+/***/ }),
+
+/***/ "events":
+/*!*************************!*\
+  !*** external "events" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("events");
+
+/***/ }),
+
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
+/***/ "http":
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("http");
+
+/***/ }),
+
+/***/ "https":
+/*!************************!*\
+  !*** external "https" ***!
+  \************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("https");
+
+/***/ }),
+
+/***/ "net":
+/*!**********************!*\
+  !*** external "net" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("net");
+
+/***/ }),
+
+/***/ "os":
+/*!*********************!*\
+  !*** external "os" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("os");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("path");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "tls":
+/*!**********************!*\
+  !*** external "tls" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tls");
+
+/***/ }),
+
+/***/ "tty":
+/*!**********************!*\
+  !*** external "tty" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("tty");
+
+/***/ }),
+
+/***/ "url":
+/*!**********************!*\
+  !*** external "url" ***!
+  \**********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
+
+/***/ }),
+
+/***/ "util":
+/*!***********************!*\
+  !*** external "util" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("util");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
+
+/***/ }),
+
 /***/ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D! ***!
@@ -131,13 +296,35 @@ eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__w
 
 /***/ }),
 
-/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true!":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?server=true! ***!
-  \******************************************************************************************************/
-/***/ (() => {
+/***/ "(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true! ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
+eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(__webpack_require__, /*! ./src/app/page.tsx */ \"(ssr)/./src/app/page.tsx\"));\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LWZsaWdodC1jbGllbnQtZW50cnktbG9hZGVyLmpzP21vZHVsZXM9JTdCJTIycmVxdWVzdCUyMiUzQSUyMiUyRlVzZXJzJTJGZ2FicmllbGxlZGFuZyUyRkRlc2t0b3AlMkZhcmwtc2Vuc29yLW1hcCUyRmNsaWVudCUyRnNyYyUyRmFwcCUyRnBhZ2UudHN4JTIyJTJDJTIyaWRzJTIyJTNBJTVCJTVEJTdEJnNlcnZlcj10cnVlISIsIm1hcHBpbmdzIjoiQUFBQSxnSkFBd0ciLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jbGllbnQvP2EwYjAiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0KC8qIHdlYnBhY2tNb2RlOiBcImVhZ2VyXCIgKi8gXCIvVXNlcnMvZ2FicmllbGxlZGFuZy9EZXNrdG9wL2FybC1zZW5zb3ItbWFwL2NsaWVudC9zcmMvYXBwL3BhZ2UudHN4XCIpO1xuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/next/dist/build/webpack/loaders/next-flight-client-entry-loader.js?modules=%7B%22request%22%3A%22%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp%2Fpage.tsx%22%2C%22ids%22%3A%5B%5D%7D&server=true!\n");
 
+/***/ }),
+
+/***/ "(ssr)/./src/app/page.tsx":
+/*!**************************!*\
+  !*** ./src/app/page.tsx ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Collections)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"(ssr)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/ssr/react.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _src_socket__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../src/socket */ \"(ssr)/./src/socket.js\");\n/* __next_internal_client_entry_do_not_use__ default auto */ \n\n\n// async function getData() {\n//   const data = await prisma.data.findMany({\n//     where: { nodeID: \"node 1\" },\n//   });\n//   return data;\n// }\nfunction Collections() {\n    // const data = await getData();\n    const [isConnected, setIsConnected] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);\n    const [transport, setTransport] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(\"N/A\");\n    const [receivedMessage, setReceivedMessage] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({});\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{\n        if (_src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.connected) {\n            onConnect();\n        }\n        function onConnect() {\n            setIsConnected(true);\n        }\n        function onDisconnect() {\n            setIsConnected(false);\n            setTransport(\"N/A\");\n        }\n        _src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.on(\"connect\", ()=>{\n            console.log(\"connected to server\");\n            setIsConnected(true);\n        });\n        _src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.on(\"disconnect\", onDisconnect);\n        return ()=>{\n            _src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.off(\"connect\", onConnect);\n            _src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.off(\"disconnect\", onDisconnect);\n        };\n    }, []);\n    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{\n        _src_socket__WEBPACK_IMPORTED_MODULE_2__.socket.on(\"message\", (nodeData)=>{\n            console.log(\"Receiced data\", nodeData);\n            setReceivedMessage(nodeData);\n        });\n    });\n    // const sendMessage = () => {\n    //   socket.emit(\"msg\", { sensorData });\n    // };\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n            children: [\n                \"Websocket Status: \",\n                isConnected ? \"connected\" : \"disconnected\"\n            ]\n        }, void 0, true, {\n            fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/page.tsx\",\n            lineNumber: 70,\n            columnNumber: 7\n        }, this)\n    }, void 0, false);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvYXBwL3BhZ2UudHN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFJNEM7QUFDRjtBQUUxQyw2QkFBNkI7QUFDN0IsOENBQThDO0FBQzlDLG1DQUFtQztBQUNuQyxRQUFRO0FBQ1IsaUJBQWlCO0FBQ2pCLElBQUk7QUFFVyxTQUFTRztJQUN0QixnQ0FBZ0M7SUFDaEMsTUFBTSxDQUFDQyxhQUFhQyxlQUFlLEdBQUdKLCtDQUFRQSxDQUFDO0lBQy9DLE1BQU0sQ0FBQ0ssV0FBV0MsYUFBYSxHQUFHTiwrQ0FBUUEsQ0FBQztJQUMzQyxNQUFNLENBQUNPLGlCQUFpQkMsbUJBQW1CLEdBQUdSLCtDQUFRQSxDQUFDLENBQUM7SUFFeERELGdEQUFTQSxDQUFDO1FBQ1IsSUFBSUUsK0NBQU1BLENBQUNRLFNBQVMsRUFBRTtZQUNwQkM7UUFDRjtRQUVBLFNBQVNBO1lBQ1BOLGVBQWU7UUFDakI7UUFFQSxTQUFTTztZQUNQUCxlQUFlO1lBQ2ZFLGFBQWE7UUFDZjtRQUVBTCwrQ0FBTUEsQ0FBQ1csRUFBRSxDQUFDLFdBQVc7WUFDbkJDLFFBQVFDLEdBQUcsQ0FBQztZQUNaVixlQUFlO1FBQ2pCO1FBQ0FILCtDQUFNQSxDQUFDVyxFQUFFLENBQUMsY0FBY0Q7UUFFeEIsT0FBTztZQUNMViwrQ0FBTUEsQ0FBQ2MsR0FBRyxDQUFDLFdBQVdMO1lBQ3RCVCwrQ0FBTUEsQ0FBQ2MsR0FBRyxDQUFDLGNBQWNKO1FBQzNCO0lBQ0YsR0FBRyxFQUFFO0lBRUxaLGdEQUFTQSxDQUFDO1FBQ1JFLCtDQUFNQSxDQUFDVyxFQUFFLENBQUMsV0FBVyxDQUFDSTtZQUNwQkgsUUFBUUMsR0FBRyxDQUFDLGlCQUFpQkU7WUFDN0JSLG1CQUFtQlE7UUFDckI7SUFDRjtJQUVBLDhCQUE4QjtJQUM5Qix3Q0FBd0M7SUFDeEMsS0FBSztJQUNMLHFCQUNFO2tCQVlFLDRFQUFDQzs7Z0JBQUU7Z0JBQW1CZCxjQUFjLGNBQWM7Ozs7Ozs7O0FBR3hEIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY2xpZW50Ly4vc3JjL2FwcC9wYWdlLnRzeD9mNjhhIl0sInNvdXJjZXNDb250ZW50IjpbIlwidXNlIGNsaWVudFwiO1xuaW1wb3J0IHByaXNtYSBmcm9tIFwiLi4vLi4vbGliL3ByaXNtYVwiO1xuaW1wb3J0IERhdGEgZnJvbSBcIi4uL2FwcC9jb21wb25lbnRzL0RhdGFcIjtcblxuaW1wb3J0IHsgdXNlRWZmZWN0LCB1c2VTdGF0ZSB9IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IHsgc29ja2V0IH0gZnJvbSBcIi4uLy4uL3NyYy9zb2NrZXRcIjtcblxuLy8gYXN5bmMgZnVuY3Rpb24gZ2V0RGF0YSgpIHtcbi8vICAgY29uc3QgZGF0YSA9IGF3YWl0IHByaXNtYS5kYXRhLmZpbmRNYW55KHtcbi8vICAgICB3aGVyZTogeyBub2RlSUQ6IFwibm9kZSAxXCIgfSxcbi8vICAgfSk7XG4vLyAgIHJldHVybiBkYXRhO1xuLy8gfVxuXG5leHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb2xsZWN0aW9ucygpIHtcbiAgLy8gY29uc3QgZGF0YSA9IGF3YWl0IGdldERhdGEoKTtcbiAgY29uc3QgW2lzQ29ubmVjdGVkLCBzZXRJc0Nvbm5lY3RlZF0gPSB1c2VTdGF0ZShmYWxzZSk7XG4gIGNvbnN0IFt0cmFuc3BvcnQsIHNldFRyYW5zcG9ydF0gPSB1c2VTdGF0ZShcIk4vQVwiKTtcbiAgY29uc3QgW3JlY2VpdmVkTWVzc2FnZSwgc2V0UmVjZWl2ZWRNZXNzYWdlXSA9IHVzZVN0YXRlKHt9KTtcblxuICB1c2VFZmZlY3QoKCkgPT4ge1xuICAgIGlmIChzb2NrZXQuY29ubmVjdGVkKSB7XG4gICAgICBvbkNvbm5lY3QoKTtcbiAgICB9XG5cbiAgICBmdW5jdGlvbiBvbkNvbm5lY3QoKSB7XG4gICAgICBzZXRJc0Nvbm5lY3RlZCh0cnVlKTtcbiAgICB9XG5cbiAgICBmdW5jdGlvbiBvbkRpc2Nvbm5lY3QoKSB7XG4gICAgICBzZXRJc0Nvbm5lY3RlZChmYWxzZSk7XG4gICAgICBzZXRUcmFuc3BvcnQoXCJOL0FcIik7XG4gICAgfVxuXG4gICAgc29ja2V0Lm9uKFwiY29ubmVjdFwiLCAoKSA9PiB7XG4gICAgICBjb25zb2xlLmxvZyhcImNvbm5lY3RlZCB0byBzZXJ2ZXJcIik7XG4gICAgICBzZXRJc0Nvbm5lY3RlZCh0cnVlKTtcbiAgICB9KTtcbiAgICBzb2NrZXQub24oXCJkaXNjb25uZWN0XCIsIG9uRGlzY29ubmVjdCk7XG5cbiAgICByZXR1cm4gKCkgPT4ge1xuICAgICAgc29ja2V0Lm9mZihcImNvbm5lY3RcIiwgb25Db25uZWN0KTtcbiAgICAgIHNvY2tldC5vZmYoXCJkaXNjb25uZWN0XCIsIG9uRGlzY29ubmVjdCk7XG4gICAgfTtcbiAgfSwgW10pO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgc29ja2V0Lm9uKFwibWVzc2FnZVwiLCAobm9kZURhdGEpID0+IHtcbiAgICAgIGNvbnNvbGUubG9nKFwiUmVjZWljZWQgZGF0YVwiLCBub2RlRGF0YSk7XG4gICAgICBzZXRSZWNlaXZlZE1lc3NhZ2Uobm9kZURhdGEpO1xuICAgIH0pO1xuICB9KTtcblxuICAvLyBjb25zdCBzZW5kTWVzc2FnZSA9ICgpID0+IHtcbiAgLy8gICBzb2NrZXQuZW1pdChcIm1zZ1wiLCB7IHNlbnNvckRhdGEgfSk7XG4gIC8vIH07XG4gIHJldHVybiAoXG4gICAgPD5cbiAgICAgIHsvKiB7ZGF0YS5tYXAoKGVudHJ5KSA9PiB7XG4gICAgICAgIHJldHVybiAoXG4gICAgICAgICAgPERhdGFcbiAgICAgICAgICAgIGtleT17ZW50cnkubm9kZUlEfVxuICAgICAgICAgICAgbm9kZUlEPXtlbnRyeS5ub2RlSUR9XG4gICAgICAgICAgICBsYXRpdHVkZT17ZW50cnkubGF0aXR1ZGV9XG4gICAgICAgICAgICBsb25naXR1ZGU9e2VudHJ5LmxvbmdpdHVkZX1cbiAgICAgICAgICAvPlxuICAgICAgICApO1xuICAgICAgfSl9ICovfVxuXG4gICAgICA8cD5XZWJzb2NrZXQgU3RhdHVzOiB7aXNDb25uZWN0ZWQgPyBcImNvbm5lY3RlZFwiIDogXCJkaXNjb25uZWN0ZWRcIn08L3A+XG4gICAgPC8+XG4gICk7XG59XG4iXSwibmFtZXMiOlsidXNlRWZmZWN0IiwidXNlU3RhdGUiLCJzb2NrZXQiLCJDb2xsZWN0aW9ucyIsImlzQ29ubmVjdGVkIiwic2V0SXNDb25uZWN0ZWQiLCJ0cmFuc3BvcnQiLCJzZXRUcmFuc3BvcnQiLCJyZWNlaXZlZE1lc3NhZ2UiLCJzZXRSZWNlaXZlZE1lc3NhZ2UiLCJjb25uZWN0ZWQiLCJvbkNvbm5lY3QiLCJvbkRpc2Nvbm5lY3QiLCJvbiIsImNvbnNvbGUiLCJsb2ciLCJvZmYiLCJub2RlRGF0YSIsInAiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./src/app/page.tsx\n");
+
+/***/ }),
+
+/***/ "(ssr)/./src/socket.js":
+/*!***********************!*\
+  !*** ./src/socket.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   socket: () => (/* binding */ socket)\n/* harmony export */ });\n/* harmony import */ var socket_io_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! socket.io-client */ \"(ssr)/./node_modules/socket.io-client/build/esm-debug/index.js\");\n/* __next_internal_client_entry_do_not_use__ socket auto */ \nconst socket = (0,socket_io_client__WEBPACK_IMPORTED_MODULE_0__.io)(\"http://localhost:3001\");\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9zcmMvc29ja2V0LmpzIiwibWFwcGluZ3MiOiI7Ozs7OzREQUVzQztBQUUvQixNQUFNQyxTQUFTRCxvREFBRUEsQ0FBQyx5QkFBeUIiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jbGllbnQvLi9zcmMvc29ja2V0LmpzPzgyOTgiXSwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2UgY2xpZW50XCI7XG5cbmltcG9ydCB7IGlvIH0gZnJvbSBcInNvY2tldC5pby1jbGllbnRcIjtcblxuZXhwb3J0IGNvbnN0IHNvY2tldCA9IGlvKFwiaHR0cDovL2xvY2FsaG9zdDozMDAxXCIpO1xuIl0sIm5hbWVzIjpbImlvIiwic29ja2V0Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(ssr)/./src/socket.js\n");
 
 /***/ }),
 
@@ -149,28 +336,6 @@ eval("Promise.resolve(/*! import() eager */).then(__webpack_require__.t.bind(__w
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"c6fde9c38021\");\nif (false) {}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL2dsb2JhbHMuY3NzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSxpRUFBZSxjQUFjO0FBQzdCLElBQUksS0FBVSxFQUFFLEVBQXVCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY2xpZW50Ly4vc3JjL2FwcC9nbG9iYWxzLmNzcz8yMmQ4Il0sInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBkZWZhdWx0IFwiYzZmZGU5YzM4MDIxXCJcbmlmIChtb2R1bGUuaG90KSB7IG1vZHVsZS5ob3QuYWNjZXB0KCkgfVxuIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./src/app/globals.css\n");
-
-/***/ }),
-
-/***/ "(rsc)/./lib/prisma.ts":
-/*!***********************!*\
-  !*** ./lib/prisma.ts ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _prisma_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @prisma/client */ \"@prisma/client\");\n/* harmony import */ var _prisma_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_prisma_client__WEBPACK_IMPORTED_MODULE_0__);\n\nconst prisma = global.prisma || new _prisma_client__WEBPACK_IMPORTED_MODULE_0__.PrismaClient();\nif (true) {\n    global.prisma = prisma;\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (prisma);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9saWIvcHJpc21hLnRzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUE4QztBQVE5QyxNQUFNQyxTQUFTQyxPQUFPRCxNQUFNLElBQUksSUFBSUQsd0RBQVlBO0FBRWhELElBQUlHLElBQXFDLEVBQUU7SUFDekNELE9BQU9ELE1BQU0sR0FBR0E7QUFDbEI7QUFFQSxpRUFBZUEsTUFBTUEsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL2NsaWVudC8uL2xpYi9wcmlzbWEudHM/OTgyMiJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBQcmlzbWFDbGllbnQgfSBmcm9tIFwiQHByaXNtYS9jbGllbnRcIjtcblxuLy8gRXh0ZW5kIHRoZSBOb2RlSlMgZ2xvYmFsIG9iamVjdCB0byBpbmNsdWRlIHRoZSBwcmlzbWEgcHJvcGVydHlcbmRlY2xhcmUgZ2xvYmFsIHtcbiAgLy8gZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIG5vLXZhclxuICB2YXIgcHJpc21hOiBQcmlzbWFDbGllbnQgfCB1bmRlZmluZWQ7XG59XG5cbmNvbnN0IHByaXNtYSA9IGdsb2JhbC5wcmlzbWEgfHwgbmV3IFByaXNtYUNsaWVudCgpO1xuXG5pZiAocHJvY2Vzcy5lbnYuTk9ERV9FTlYgIT09IFwicHJvZHVjdGlvblwiKSB7XG4gIGdsb2JhbC5wcmlzbWEgPSBwcmlzbWE7XG59XG5cbmV4cG9ydCBkZWZhdWx0IHByaXNtYTtcbiJdLCJuYW1lcyI6WyJQcmlzbWFDbGllbnQiLCJwcmlzbWEiLCJnbG9iYWwiLCJwcm9jZXNzIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(rsc)/./lib/prisma.ts\n");
-
-/***/ }),
-
-/***/ "(rsc)/./src/app/components/Data.tsx":
-/*!*************************************!*\
-  !*** ./src/app/components/Data.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Data)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n\nasync function Data({ nodeID, longitude, latitude }) {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h3\", {\n                children: nodeID\n            }, void 0, false, {\n                fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/components/Data.tsx\",\n                lineNumber: 11,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h3\", {\n                children: Number(longitude)\n            }, void 0, false, {\n                fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/components/Data.tsx\",\n                lineNumber: 12,\n                columnNumber: 7\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h3\", {\n                children: Number(latitude)\n            }, void 0, false, {\n                fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/components/Data.tsx\",\n                lineNumber: 13,\n                columnNumber: 7\n            }, this)\n        ]\n    }, void 0, true, {\n        fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/components/Data.tsx\",\n        lineNumber: 10,\n        columnNumber: 5\n    }, this);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL2NvbXBvbmVudHMvRGF0YS50c3giLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQU9lLGVBQWVBLEtBQUssRUFBRUMsTUFBTSxFQUFFQyxTQUFTLEVBQUVDLFFBQVEsRUFBYTtJQUMzRSxxQkFDRSw4REFBQ0M7OzBCQUNDLDhEQUFDQzswQkFBSUo7Ozs7OzswQkFDTCw4REFBQ0k7MEJBQUlDLE9BQU9KOzs7Ozs7MEJBQ1osOERBQUNHOzBCQUFJQyxPQUFPSDs7Ozs7Ozs7Ozs7O0FBR2xCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vY2xpZW50Ly4vc3JjL2FwcC9jb21wb25lbnRzL0RhdGEudHN4P2I3YWQiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRGVjaW1hbCB9IGZyb20gXCJAcHJpc21hL2NsaWVudC9ydW50aW1lL2xpYnJhcnlcIjtcbnR5cGUgRGF0YVByb3BzID0ge1xuICBub2RlSUQ6IHN0cmluZztcbiAgbG9uZ2l0dWRlOiBEZWNpbWFsO1xuICBsYXRpdHVkZTogRGVjaW1hbDtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIERhdGEoeyBub2RlSUQsIGxvbmdpdHVkZSwgbGF0aXR1ZGUgfTogRGF0YVByb3BzKSB7XG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxoMz57bm9kZUlEfTwvaDM+XG4gICAgICA8aDM+e051bWJlcihsb25naXR1ZGUpfTwvaDM+XG4gICAgICA8aDM+e051bWJlcihsYXRpdHVkZSl9PC9oMz5cbiAgICA8L2Rpdj5cbiAgKTtcbn1cbiJdLCJuYW1lcyI6WyJEYXRhIiwibm9kZUlEIiwibG9uZ2l0dWRlIiwibGF0aXR1ZGUiLCJkaXYiLCJoMyIsIk51bWJlciJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./src/app/components/Data.tsx\n");
 
 /***/ }),
 
@@ -192,7 +357,25 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Collections)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"(rsc)/./node_modules/next/dist/server/future/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _lib_prisma__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../lib/prisma */ \"(rsc)/./lib/prisma.ts\");\n/* harmony import */ var _app_components_Data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../app/components/Data */ \"(rsc)/./src/app/components/Data.tsx\");\n\n\n\nasync function getData() {\n    const data = await _lib_prisma__WEBPACK_IMPORTED_MODULE_1__[\"default\"].data.findMany({\n        where: {\n            nodeID: \"node 1\"\n        }\n    });\n    return data;\n}\nasync function Collections() {\n    const data = await getData();\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: data.map((entry)=>{\n            return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(_app_components_Data__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n                nodeID: entry.nodeID,\n                latitude: entry.latitude,\n                longitude: entry.longitude\n            }, entry.nodeID, false, {\n                fileName: \"/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/page.tsx\",\n                lineNumber: 17,\n                columnNumber: 11\n            }, this);\n        })\n    }, void 0, false);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9zcmMvYXBwL3BhZ2UudHN4IiwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFzQztBQUNJO0FBRTFDLGVBQWVFO0lBQ2IsTUFBTUMsT0FBTyxNQUFNSCxtREFBTUEsQ0FBQ0csSUFBSSxDQUFDQyxRQUFRLENBQUM7UUFDdENDLE9BQU87WUFBRUMsUUFBUTtRQUFTO0lBQzVCO0lBQ0EsT0FBT0g7QUFDVDtBQUVlLGVBQWVJO0lBQzVCLE1BQU1KLE9BQU8sTUFBTUQ7SUFDbkIscUJBQ0U7a0JBQ0dDLEtBQUtLLEdBQUcsQ0FBQyxDQUFDQztZQUNULHFCQUNFLDhEQUFDUiw0REFBSUE7Z0JBRUhLLFFBQVFHLE1BQU1ILE1BQU07Z0JBQ3BCSSxVQUFVRCxNQUFNQyxRQUFRO2dCQUN4QkMsV0FBV0YsTUFBTUUsU0FBUztlQUhyQkYsTUFBTUgsTUFBTTs7Ozs7UUFNdkI7O0FBR04iLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9jbGllbnQvLi9zcmMvYXBwL3BhZ2UudHN4P2Y2OGEiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHByaXNtYSBmcm9tIFwiLi4vLi4vbGliL3ByaXNtYVwiO1xuaW1wb3J0IERhdGEgZnJvbSBcIi4uL2FwcC9jb21wb25lbnRzL0RhdGFcIjtcblxuYXN5bmMgZnVuY3Rpb24gZ2V0RGF0YSgpIHtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IHByaXNtYS5kYXRhLmZpbmRNYW55KHtcbiAgICB3aGVyZTogeyBub2RlSUQ6IFwibm9kZSAxXCIgfSxcbiAgfSk7XG4gIHJldHVybiBkYXRhO1xufVxuXG5leHBvcnQgZGVmYXVsdCBhc3luYyBmdW5jdGlvbiBDb2xsZWN0aW9ucygpIHtcbiAgY29uc3QgZGF0YSA9IGF3YWl0IGdldERhdGEoKTtcbiAgcmV0dXJuIChcbiAgICA8PlxuICAgICAge2RhdGEubWFwKChlbnRyeSkgPT4ge1xuICAgICAgICByZXR1cm4gKFxuICAgICAgICAgIDxEYXRhXG4gICAgICAgICAgICBrZXk9e2VudHJ5Lm5vZGVJRH1cbiAgICAgICAgICAgIG5vZGVJRD17ZW50cnkubm9kZUlEfVxuICAgICAgICAgICAgbGF0aXR1ZGU9e2VudHJ5LmxhdGl0dWRlfVxuICAgICAgICAgICAgbG9uZ2l0dWRlPXtlbnRyeS5sb25naXR1ZGV9XG4gICAgICAgICAgLz5cbiAgICAgICAgKTtcbiAgICAgIH0pfVxuICAgIDwvPlxuICApO1xufVxuIl0sIm5hbWVzIjpbInByaXNtYSIsIkRhdGEiLCJnZXREYXRhIiwiZGF0YSIsImZpbmRNYW55Iiwid2hlcmUiLCJub2RlSUQiLCJDb2xsZWN0aW9ucyIsIm1hcCIsImVudHJ5IiwibGF0aXR1ZGUiLCJsb25naXR1ZGUiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./src/app/page.tsx\n");
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $$typeof: () => (/* binding */ $$typeof),
+/* harmony export */   __esModule: () => (/* binding */ __esModule),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-flight-loader/module-proxy */ "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-loader/module-proxy.js");
+
+const proxy = (0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/page.tsx`)
+
+// Accessing the __esModule property and exporting $$typeof are required here.
+// The __esModule getter forces the proxy target to create the default export
+// and the $$typeof value is for rendering logic to determine if the module
+// is a client boundary.
+const { __esModule, $$typeof } = proxy;
+const __default__ = proxy.default;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_webpack_loaders_next_flight_loader_module_proxy__WEBPACK_IMPORTED_MODULE_0__.createProxy)(String.raw`/Users/gabrielledang/Desktop/arl-sensor-map/client/src/app/page.tsx#default`));
+
 
 /***/ })
 
@@ -203,7 +386,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/@swc"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
+var __webpack_exports__ = __webpack_require__.X(0, ["vendor-chunks/next","vendor-chunks/engine.io-client","vendor-chunks/socket.io-client","vendor-chunks/@swc","vendor-chunks/engine.io-parser","vendor-chunks/debug","vendor-chunks/socket.io-parser","vendor-chunks/utf-8-validate","vendor-chunks/node-gyp-build","vendor-chunks/bufferutil","vendor-chunks/@socket.io","vendor-chunks/xmlhttprequest-ssl","vendor-chunks/supports-color","vendor-chunks/ms","vendor-chunks/has-flag"], () => (__webpack_exec__("(rsc)/./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fpage&page=%2Fpage&appPaths=%2Fpage&pagePath=private-next-app-dir%2Fpage.tsx&appDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient%2Fsrc%2Fapp&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&rootDir=%2FUsers%2Fgabrielledang%2FDesktop%2Farl-sensor-map%2Fclient&isDev=true&tsconfigPath=tsconfig.json&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!")));
 module.exports = __webpack_exports__;
 
 })();
