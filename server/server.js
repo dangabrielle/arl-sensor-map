@@ -5,8 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mqtt = require("mqtt");
 
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = require("./db/prisma");
 
 const app = express();
 const server = http.createServer(app);
