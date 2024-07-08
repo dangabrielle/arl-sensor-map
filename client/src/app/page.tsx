@@ -45,7 +45,7 @@ export default function Collections() {
   }, []);
 
   useEffect(() => {
-    socket.on("message", (nodeData) => {
+    socket.on("newSensorData", (nodeData) => {
       console.log("Receiced data", nodeData);
       setReceivedMessage(nodeData);
     });
@@ -68,6 +68,7 @@ export default function Collections() {
       })} */}
 
       <p>Websocket Status: {isConnected ? "connected" : "disconnected"}</p>
+      <p>{JSON.stringify(receivedMessage)}</p>
     </>
   );
 }

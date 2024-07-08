@@ -49,7 +49,7 @@ client.on("connect", () => {
 client.on("message", async (topic, payload) => {
   console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
-  console.log(sensorData);
+  console.log(data);
   try {
     const result = await prisma.data.create({
       data,
