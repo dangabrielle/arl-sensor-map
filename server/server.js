@@ -50,13 +50,16 @@ client.on("message", async (topic, payload) => {
   console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
   console.log(data);
+
+  let result;
   try {
-    const result = await prisma.data.create({
+    result = await prisma.data.create({
       data,
     });
     console.log(result);
   } catch (err) {
-    console.log("error creating user", err);
+    console.error("Error creating data", err);
+    return;
   }
 
   io.emit("newSensorData", result);
