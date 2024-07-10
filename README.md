@@ -8,6 +8,7 @@ Create a Common Operating Picture software prototype designed for situational aw
 
 ### View Project Progress:
 
+Last deployed on 7/9
 [ARL Sensor Map](https://arl-sensor-map.vercel.app/), or click on the link on the top right corner.
 
 ### Project Wireframe
