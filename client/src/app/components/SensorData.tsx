@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { socket } from "../../socket";
 
 type Props = {
-  initialSensorData: SensorDataType[];
+  initialData: SensorDataType[];
 };
 
 type SensorDataType = {
@@ -18,11 +18,10 @@ type SensorDataType = {
   health: string;
   employeeId?: string | null;
 };
-const SensorData = ({ initialSensorData }: Props) => {
+const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
-  const [sensorData, setSensorData] =
-    useState<SensorDataType[]>(initialSensorData);
+  const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
 
   useEffect(() => {
     const onConnect = () => {

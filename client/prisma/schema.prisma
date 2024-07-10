@@ -10,7 +10,7 @@ datasource db {
 
 model Data {
   id        String  @default(cuid()) @id
-  nodeID    String     
+  nodeID    String  
   latitude  Decimal
   longitude Decimal
   time      String

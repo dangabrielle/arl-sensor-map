@@ -66,7 +66,6 @@ client.on("message", async (topic, payload) => {
     console.log(result);
   } catch (err) {
     console.error("Error creating data", err);
-    return;
   }
 
   io.emit("newSensorData", result);
