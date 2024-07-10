@@ -18,7 +18,7 @@ type SensorDataType = {
   health: string;
   employeeId?: string | null;
 };
-const sensorData = ({ initialSensorData }: Props) => {
+const SensorData = ({ initialSensorData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] =
@@ -72,4 +72,4 @@ const sensorData = ({ initialSensorData }: Props) => {
   );
 };
 
-export default sensorData;
+export default SensorData;
