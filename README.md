@@ -1,3 +1,15 @@
-6/20-21: Currently working on app ideas for a fullstack Nextjs application (need to discuss with Baseem). Reviewing React and learning Next.js -- working on a sample dashboard app tutorial https://github.com/dangabrielle/dashboard-app-nextjs. Update: decided to start setting up the backend (express server with Node, and postgresQL integration), intially attempted to install openTAK server but it does not have documentation for macOS.
+# ARL SENSOR MAP
 
-6/26-28 Worked on soldering basics and miso assembly. Set up nextjs frontend and backend with postgres + prisma (ORM), successfully sent a POST request from the client (browser) to the server containing mock JSON data, and updating the UI. Looking into mqtt and websocket protocols and how I will incorporate that into my project. Hope to send in figma mockup on Monday.
+### This project is still in development.
+
+### Goal:
+
+Create a Common Operating Picture software prototype designed for situational awareness and use by the Applied Research Laboratory, Hawai'i. This will consist of a map displaying sensor data updates in real-time, and is aimed to provide critical information for the Department of Defense, in order to make accurate decisions.
+
+### View Project Progress:
+
+[ARL Sensor Map](https://arl-sensor-map.vercel.app/), or click on the link on the top right corner.
+
+### Project Wireframe
+
+!(/client/public/ARL-Sensor-Map-Wireframe.png)
