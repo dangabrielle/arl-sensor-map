@@ -12,4 +12,4 @@ Create a Common Operating Picture software prototype designed for situational aw
 
 ### Project Wireframe
 
-!(/client/public/ARL-Sensor-Map-Wireframe.png)
+![](/client/public/ARL-Sensor-Map-Wireframe.png)
