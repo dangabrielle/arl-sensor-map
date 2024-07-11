@@ -12,10 +12,6 @@ interface MapProps {
   zoom?: number;
 }
 
-const defaults = {
-  zoom: 19,
-};
-
 type Props = {
   sensorData: SensorDataType[];
 };
@@ -33,13 +29,10 @@ type SensorDataType = {
 };
 
 const Map = ({ sensorData }: Props) => {
-  //   const { zoom = defaults.zoom, posix } = Map;
-  //   console.log(posix);
-  console.log("map: ", sensorData);
   return (
     <MapContainer
-      center={[37.7749, -122.4194]}
-      zoom={19}
+      center={[38.46, -121.87]}
+      zoom={7.5}
       className="h-full w-full"
     >
       <TileLayer
