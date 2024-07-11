@@ -577,8 +577,14 @@ video {
 .h-\[480px\] {
   height: 480px;
 }
+.h-full {
+  height: 100%;
+}
 .w-\[98\%\] {
   width: 98%;
+}
+.w-full {
+  width: 100%;
 }
 
 :root {
