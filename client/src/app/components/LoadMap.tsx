@@ -2,8 +2,25 @@
 import React from "react";
 import { useMemo } from "react";
 import nextDynamic from "next/dynamic";
+import { posix } from "path";
 
-const LoadMap = () => {
+type Props = {
+  sensorData: SensorDataType[];
+};
+
+type SensorDataType = {
+  nodeID: string;
+  latitude: number;
+  longitude: number;
+  time: string;
+  temp: number;
+  humidity: number;
+  battery: number;
+  health: string;
+  employeeId?: string | null;
+};
+
+const LoadMap = ({ sensorData }: Props) => {
   const Map = useMemo(
     () =>
       nextDynamic(() => import("./Map"), {
@@ -14,7 +31,7 @@ const LoadMap = () => {
   );
   return (
     <div className="bg-white-700 mx-auto my-5 w-[98%] h-[480px]">
-      <Map posix={[21.3087, -157.8087]} />
+      <Map sensorData={sensorData} />
     </div>
   );
 };

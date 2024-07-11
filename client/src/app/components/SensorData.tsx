@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { socket } from "../../socket";
+import React from "react";
+import LoadMap from "./LoadMap";
 
 type Props = {
   initialData: SensorDataType[];
@@ -67,6 +69,8 @@ const SensorData = ({ initialData }: Props) => {
           </li>
         ))}
       </ul>
+
+      <LoadMap sensorData={sensorData} />
     </div>
   );
 };

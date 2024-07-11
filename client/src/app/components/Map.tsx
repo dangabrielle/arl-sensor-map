@@ -8,7 +8,7 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 
 interface MapProps {
-  posix: LatLngExpression | LatLngTuple;
+  posix: LatLngExpression[] | LatLngTuple[];
   zoom?: number;
 }
 
@@ -16,18 +16,45 @@ const defaults = {
   zoom: 19,
 };
 
-const Map = (Map: MapProps) => {
-  const { zoom = defaults.zoom, posix } = Map;
+type Props = {
+  sensorData: SensorDataType[];
+};
 
+type SensorDataType = {
+  nodeID: string;
+  latitude: number;
+  longitude: number;
+  time: string;
+  temp: number;
+  humidity: number;
+  battery: number;
+  health: string;
+  employeeId?: string | null;
+};
+
+const Map = ({ sensorData }: Props) => {
+  //   const { zoom = defaults.zoom, posix } = Map;
+  //   console.log(posix);
+  console.log("map: ", sensorData);
   return (
-    <MapContainer center={posix} zoom={zoom} className="h-full w-full">
+    <MapContainer
+      center={[37.7749, -122.4194]}
+      zoom={19}
+      className="h-full w-full"
+    >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={posix} draggable={false}>
-        <Popup>Manoa Innovation Center</Popup>
-      </Marker>
+      {sensorData.map((data, index) => (
+        <Marker
+          key={index}
+          position={[data.latitude, data.longitude]}
+          draggable={false}
+        >
+          <Popup>{data.nodeID}</Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 };
