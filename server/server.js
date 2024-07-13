@@ -82,6 +82,11 @@ client.on("message", async (topic, payload) => {
         data: {
           latitude: data.latitude,
           longitude: data.longitude,
+          time: data.time,
+          temp: data.temp,
+          humidity: data.humidity,
+          battery: data.battery,
+          health: data.health,
         },
       });
       console.log("Successfully updated node: ", updatedNode);
