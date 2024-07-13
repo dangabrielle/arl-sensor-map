@@ -40,7 +40,37 @@ const SensorData = ({ initialData }: Props) => {
 
     const onNewSensorData = (data: SensorDataType) => {
       console.log("Received new sensor data:", data);
-      setSensorData((prevData) => [...prevData, data]);
+      // add updates to coordinates logic for existing nodes here
+      // let alreadyExists = false;
+      // for (let i = 0; i < sensorData.length; i++) {
+      //   if (sensorData[i].nodeID === data.nodeID) {
+      //     sensorData[i] = data;
+      //     alreadyExists = true;
+      //   }
+      // }
+
+      // console.log("sensor data update", sensorData);
+      // console.log(alreadyExists);
+
+      // if (alreadyExists) {
+      //   setSensorData(sensorData);
+      // } else {
+      //   setSensorData((prevData) => [...prevData, data]);
+      // }
+
+      setSensorData((prevData) => {
+        let idx = prevData.findIndex(
+          (current) => current.nodeID == data.nodeID
+        );
+        let newData = [...prevData];
+        if (idx !== -1) {
+          newData[idx] = data;
+          console.log(newData);
+          return newData;
+        } else {
+          return [...prevData, data];
+        }
+      });
     };
 
     socket.on("connect", onConnect);

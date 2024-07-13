@@ -1,16 +1,10 @@
 "use client";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { LatLngExpression, LatLngTuple } from "leaflet";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
-
-interface MapProps {
-  posix: LatLngExpression[] | LatLngTuple[];
-  zoom?: number;
-}
 
 type Props = {
   sensorData: SensorDataType[];
@@ -45,7 +39,11 @@ const Map = ({ sensorData }: Props) => {
           position={[data.latitude, data.longitude]}
           draggable={false}
         >
-          <Popup>{data.nodeID}</Popup>
+          <Popup>
+            Node ID: {data.nodeID} <br />
+            Longitude: {data.longitude} <br />
+            Latitude: {data.latitude}
+          </Popup>
         </Marker>
       ))}
     </MapContainer>

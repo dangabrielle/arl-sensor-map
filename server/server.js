@@ -36,7 +36,7 @@ const client = mqtt.connect(connectUrl, {
   reconnectPeriod: 1000,
 });
 
-const topic = "/node/mqtt";
+const topic = "/arl/mqtt";
 
 client.on("connect", () => {
   console.log("Connected to MQTT broker");
@@ -56,20 +56,52 @@ io.on("connection", (socket) => {
 client.on("message", async (topic, payload) => {
   console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
-  console.log(data);
+  console.log(data.nodeID);
 
-  let result;
+  let existingNode;
+  let newNode;
+  // check if nodeID exists in db
   try {
-    result = await prisma.data.create({
-      data,
+    existingNode = await prisma.data.findFirst({
+      where: {
+        nodeID: data.nodeID,
+      },
     });
-    console.log(result);
-  } catch (err) {
-    console.error("Error creating data", err);
+    console.log("existing node", existingNode);
+  } catch (error) {
+    console.log("Node not found", error);
   }
-
-  io.emit("newSensorData", result);
-  console.log("data emitted to websocket client");
+  // if node exists, update its new contents
+  // if node doesn't exist, add it to db
+  if (existingNode) {
+    try {
+      const updatedNode = await prisma.data.update({
+        where: {
+          id: existingNode.id,
+        },
+        data: {
+          latitude: data.latitude,
+          longitude: data.longitude,
+        },
+      });
+      console.log("Successfully updated node: ", updatedNode);
+      io.emit("newSensorData", updatedNode);
+      console.log("data emitted to websocket client");
+    } catch (error) {
+      console.log("Unable to update node: ", error);
+    }
+  } else {
+    try {
+      newNode = await prisma.data.create({
+        data,
+      });
+      console.log("Succesfully created a new node: ", newNode);
+    } catch (err) {
+      console.error("Error creating data", err);
+      console.log("data emitted to websocket client");
+    }
+    io.emit("newSensorData", newNode);
+  }
 });
 
 app.get("/", (req, res) => {
