@@ -103,7 +103,6 @@ client.on("message", async (topic, payload) => {
       console.log("Succesfully created a new node: ", newNode);
     } catch (err) {
       console.error("Error creating data", err);
-      console.log("data emitted to websocket client");
     }
     io.emit("newSensorData", newNode);
   }
@@ -126,12 +125,71 @@ async function getAlphaSensor() {
     });
 
     const data = await response.json();
-
+    let recentUpdate;
     // get most recent update
     for (i = data.length - 1; i >= 0; i--) {
       if (data[i].lat && data[i].lon) {
         console.log(data[i]);
+        recentUpdate = data[i];
         break;
+      }
+    }
+    let existingNode;
+    let newNode;
+    // check if nodeID exists in db
+    try {
+      existingNode = await prisma.data.findFirst({
+        where: {
+          nodeID: recentUpdate.nodeId,
+        },
+      });
+      console.log("existing node", existingNode);
+    } catch (error) {
+      console.log("Node not found", error);
+    }
+    // if node exists, update its new contents
+    // if node doesn't exist, add it to db
+    if (existingNode) {
+      try {
+        const updatedNode = await prisma.data.update({
+          where: {
+            id: existingNode.id,
+          },
+          data: {
+            latitude: recentUpdate.lat,
+            longitude: recentUpdate.lon,
+            time: recentUpdate.createdAt,
+            // below are currently null, update schema
+            // temp: recentUpdate.temp,
+            // humidity: recentUpdate.humidity,
+            // battery: recentUpdate.batteryLevel,
+            // health: recentUpdate.status, // "health key not in server's object"
+          },
+        });
+        console.log("Successfully updated node: ", updatedNode);
+
+        console.log("data emitted to websocket client");
+      } catch (error) {
+        console.log("Unable to update node: ", error);
+      }
+    } else {
+      try {
+        newNode = await prisma.data.create({
+          data: {
+            nodeID: recentUpdate.nodeId,
+            latitude: recentUpdate.lat,
+            longitude: recentUpdate.lon,
+            time: recentUpdate.createdAt,
+            temp: 93, // change schema to accept null values
+            humidity: 75,
+            battery: 90,
+            health: "Good", // health key not in server's object
+          },
+        });
+        console.log("Succesfully created a new node: ", newNode);
+      } catch (err) {
+        console.error("Error creating data", err);
+        console.log("data emitted to websocket client");
       }
     }
   } catch (error) {
