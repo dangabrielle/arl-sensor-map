@@ -107,10 +107,13 @@ const SensorData = ({ initialData }: Props) => {
       <h1>Real-Time Sensor Data</h1>
       <p>Connection status: {isConnected ? "Connected" : "Disconnected"}</p>
       <p>Transport: {transport}</p>
-      <ul>
+      <ul className="flex justify-center items-center">
         {sensorData.map((data, index) => (
           <li key={index}>
-            <button onClick={() => handleClick(data.latitude, data.longitude)}>
+            <button
+              className="m-2 p-4 bg-blue-400 rounded shadow-md transform transition-transform duration-200 ease-in-out hover:bg-blue-300 hover:scale-100 active:scale-105"
+              onClick={() => handleClick(data.latitude, data.longitude)}
+            >
               Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
               {data.humidity}, Latitude: {data.latitude}, Longitude:{" "}
               {data.longitude}, Time: {data.time}, Battery: {data.battery},
