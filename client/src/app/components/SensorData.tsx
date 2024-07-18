@@ -9,7 +9,7 @@ import { useMap } from "react-leaflet";
 
 type Props = {
   initialData: SensorDataType[];
-  clickedSensor: Coordinates[] | null;
+  // clickedSensor: Coordinates | null
 };
 
 type SensorDataType = {
@@ -24,18 +24,13 @@ type SensorDataType = {
   employeeId?: string | null;
 };
 
-type Coordinates = {
-  latitude: number;
-  longitude: number;
-};
+type Coordinates = [latitude: number, longitude: number];
 
 const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
-  const [clickedSensor, setClickedSensor] = useState<Coordinates[] | null>(
-    null
-  );
+  const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
 
   useEffect(() => {
     const onConnect = () => {
@@ -97,10 +92,11 @@ const SensorData = ({ initialData }: Props) => {
   }, []);
 
   function handleClick(latitude: number, longitude: number) {
-    const clickedData: any[] = [latitude, longitude];
+    const clickedData: Coordinates = [latitude, longitude];
 
     setClickedSensor(clickedData);
     console.log(clickedData);
+
     // const map = useMap();
     // map.setView([data.latitude, data.longitude], 13);
     // return <FindLocation lat={data.latitude} lng={data.longitude} />;
