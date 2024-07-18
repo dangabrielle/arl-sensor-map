@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { socket } from "../../socket";
 import React from "react";
 import LoadMap from "./LoadMap";
+import FindLocation from "./FindLocation";
+import { useMap } from "react-leaflet";
 
 type Props = {
   initialData: SensorDataType[];
+  clickedSensor: Coordinates[] | null;
 };
 
 type SensorDataType = {
@@ -20,10 +23,19 @@ type SensorDataType = {
   health: string;
   employeeId?: string | null;
 };
+
+type Coordinates = {
+  latitude: number;
+  longitude: number;
+};
+
 const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
+  const [clickedSensor, setClickedSensor] = useState<Coordinates[] | null>(
+    null
+  );
 
   useEffect(() => {
     const onConnect = () => {
@@ -84,6 +96,16 @@ const SensorData = ({ initialData }: Props) => {
     };
   }, []);
 
+  function handleClick(latitude: number, longitude: number) {
+    const clickedData: any[] = [latitude, longitude];
+
+    setClickedSensor(clickedData);
+    console.log(clickedData);
+    // const map = useMap();
+    // map.setView([data.latitude, data.longitude], 13);
+    // return <FindLocation lat={data.latitude} lng={data.longitude} />;
+  }
+
   return (
     <div>
       <h1>Real-Time Sensor Data</h1>
@@ -92,15 +114,17 @@ const SensorData = ({ initialData }: Props) => {
       <ul>
         {sensorData.map((data, index) => (
           <li key={index}>
-            Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
-            {data.humidity}, Latitude: {data.latitude}, Longitude:{" "}
-            {data.longitude}, Time: {data.time}, Battery: {data.battery},
-            Health: {data.health}
+            <button onClick={() => handleClick(data.latitude, data.longitude)}>
+              Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
+              {data.humidity}, Latitude: {data.latitude}, Longitude:{" "}
+              {data.longitude}, Time: {data.time}, Battery: {data.battery},
+              Health: {data.health}
+            </button>
           </li>
         ))}
       </ul>
 
-      <LoadMap sensorData={sensorData} />
+      <LoadMap sensorData={sensorData} clickedSensor={clickedSensor} />
     </div>
   );
 };

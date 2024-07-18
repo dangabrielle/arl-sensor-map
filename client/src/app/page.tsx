@@ -21,7 +21,7 @@ const HomePage = async () => {
 
   return (
     <>
-      <SensorData initialData={initialData} />
+      <SensorData initialData={initialData} clickedSensor={null} />
     </>
   );
 };

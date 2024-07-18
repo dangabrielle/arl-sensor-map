@@ -6,7 +6,10 @@ import { posix } from "path";
 
 type Props = {
   sensorData: SensorDataType[];
+  clickedSensor: Coordinates | null;
 };
+
+type Coordinates = [latitude: number, longitude: number];
 
 type SensorDataType = {
   nodeID: string;
@@ -20,7 +23,8 @@ type SensorDataType = {
   employeeId?: string | null;
 };
 
-const LoadMap = ({ sensorData }: Props) => {
+const LoadMap = ({ sensorData, clickedSensor }: Props) => {
+  console.log("in loadmap", clickedSensor);
   const Map = useMemo(
     () =>
       nextDynamic(() => import("./Map"), {
@@ -31,7 +35,7 @@ const LoadMap = ({ sensorData }: Props) => {
   );
   return (
     <div className="bg-white-700 mx-auto my-5 w-[98%] h-[480px]">
-      <Map sensorData={sensorData} />
+      <Map sensorData={sensorData} clickedSensor={clickedSensor} />
     </div>
   );
 };
