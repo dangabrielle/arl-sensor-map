@@ -4,6 +4,7 @@ const socketIo = require("socket.io");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mqtt = require("mqtt");
+const fetch = require("node-fetch");
 
 const prisma = require("./db/prisma");
 
@@ -56,7 +57,6 @@ io.on("connection", (socket) => {
 client.on("message", async (topic, payload) => {
   console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
-  console.log(data.nodeID);
 
   let existingNode;
   let newNode;
@@ -112,6 +112,34 @@ client.on("message", async (topic, payload) => {
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
 });
+
+async function getAlphaSensor() {
+  try {
+    const apiKey = process.env.API_KEY;
+    const url = `https://hub.baseem.dev/nodes/all?apikey=${apiKey}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+
+    // get most recent update
+    for (i = data.length - 1; i >= 0; i--) {
+      if (data[i].lat && data[i].lon) {
+        console.log(data[i]);
+        break;
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+const alphaSensorInterval = setInterval(getAlphaSensor, 60000);
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
