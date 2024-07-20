@@ -158,7 +158,7 @@ async function getAlphaSensor() {
           data: {
             latitude: recentUpdate.lat,
             longitude: recentUpdate.lon,
-            time: recentUpdate.createdAt,
+            time: recentUpdate.updatedAt,
             // below are currently null, update schema
             // temp: recentUpdate.temp,
             // humidity: recentUpdate.humidity,
@@ -167,7 +167,7 @@ async function getAlphaSensor() {
           },
         });
         console.log("Successfully updated node: ", updatedNode);
-
+        io.emit("newSensorData", updatedNode);
         console.log("data emitted to websocket client");
       } catch (error) {
         console.log("Unable to update node: ", error);
@@ -186,10 +186,10 @@ async function getAlphaSensor() {
             health: "Good", // health key not in server's object
           },
         });
+        io.emit("newSensorData", newNode);
         console.log("Succesfully created a new node: ", newNode);
       } catch (err) {
         console.error("Error creating data", err);
-        console.log("data emitted to websocket client");
       }
     }
   } catch (error) {
