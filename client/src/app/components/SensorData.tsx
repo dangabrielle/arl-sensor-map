@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { socket } from "../../socket";
 import React from "react";
 import LoadMap from "./LoadMap";
-import FindLocation from "./FindLocation";
 import { useMap } from "react-leaflet";
 
 type Props = {
@@ -51,23 +50,6 @@ const SensorData = ({ initialData }: Props) => {
 
     const onNewSensorData = (data: SensorDataType) => {
       console.log("Received new sensor data:", data);
-      // add updates to coordinates logic for existing nodes here
-      // let alreadyExists = false;
-      // for (let i = 0; i < sensorData.length; i++) {
-      //   if (sensorData[i].nodeID === data.nodeID) {
-      //     sensorData[i] = data;
-      //     alreadyExists = true;
-      //   }
-      // }
-
-      // console.log("sensor data update", sensorData);
-      // console.log(alreadyExists);
-
-      // if (alreadyExists) {
-      //   setSensorData(sensorData);
-      // } else {
-      //   setSensorData((prevData) => [...prevData, data]);
-      // }
 
       setSensorData((prevData) => {
         let idx = prevData.findIndex(
@@ -100,10 +82,6 @@ const SensorData = ({ initialData }: Props) => {
 
     setClickedSensor(clickedData);
     console.log(clickedData);
-
-    // const map = useMap();
-    // map.setView([data.latitude, data.longitude], 13);
-    // return <FindLocation lat={data.latitude} lng={data.longitude} />;
   }
 
   return (
