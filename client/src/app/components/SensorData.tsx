@@ -33,6 +33,10 @@ const SensorData = ({ initialData }: Props) => {
   const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
 
   useEffect(() => {
+    console.log(
+      "socket server URL:",
+      process.env.NEXT_PUBLIC_WEBSOCKET_SERVER_URL
+    );
     const onConnect = () => {
       setIsConnected(true);
       setTransport(socket.io.engine.transport.name);

@@ -2,7 +2,6 @@
 import React from "react";
 import { useMemo } from "react";
 import nextDynamic from "next/dynamic";
-import { posix } from "path";
 
 type Props = {
   sensorData: SensorDataType[];
