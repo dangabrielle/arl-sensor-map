@@ -1,6 +1,12 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  CircleMarker,
+} from "react-leaflet";
 import { useMap } from "react-leaflet/hooks";
 
 import "leaflet/dist/leaflet.css";
@@ -40,9 +46,6 @@ const MyComponent = ({ clickedSensor, sensorData }: Props) => {
 
 const Map = ({ sensorData, clickedSensor }: Props) => {
   console.log("clicked", clickedSensor);
-  //   function findLocation() {
-  //       clickedSensor ? map.setView(clickedSensor, 13) : null;
-  //     }
 
   return (
     <>
@@ -56,17 +59,20 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {sensorData.map((data, index) => (
-          <Marker
+          <CircleMarker
             key={index}
-            position={[data.latitude, data.longitude]}
-            draggable={false}
+            center={[data.latitude, data.longitude]}
+            radius={10}
+            color="#d12e4f"
+            fillColor="#d12e4f"
+            fillOpacity={0.5}
           >
             <Popup>
               Node ID: {data.nodeID} <br />
               Longitude: {data.longitude} <br />
               Latitude: {data.latitude}
             </Popup>
-          </Marker>
+          </CircleMarker>
         ))}
         <MyComponent clickedSensor={clickedSensor} sensorData={sensorData} />
       </MapContainer>
