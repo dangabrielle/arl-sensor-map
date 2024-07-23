@@ -49,33 +49,31 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
 
   return (
     <>
-      <MapContainer
-        center={[38.46, -121.87]}
-        zoom={7.5}
-        className="h-full w-full"
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {sensorData.map((data, index) => (
-          <CircleMarker
-            key={index}
-            center={[data.latitude, data.longitude]}
-            radius={10}
-            color="#d12e4f"
-            fillColor="#d12e4f"
-            fillOpacity={0.5}
-          >
-            <Popup>
-              Node ID: {data.nodeID} <br />
-              Longitude: {data.longitude} <br />
-              Latitude: {data.latitude}
-            </Popup>
-          </CircleMarker>
-        ))}
-        <MyComponent clickedSensor={clickedSensor} sensorData={sensorData} />
-      </MapContainer>
+      <div id="map-container">
+        <MapContainer center={[38.46, -121.87]} zoom={7.5}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {sensorData.map((data, index) => (
+            <CircleMarker
+              key={index}
+              center={[data.latitude, data.longitude]}
+              radius={10}
+              color="#d12e4f"
+              fillColor="#d12e4f"
+              fillOpacity={0.5}
+            >
+              <Popup>
+                Node ID: {data.nodeID} <br />
+                Longitude: {data.longitude} <br />
+                Latitude: {data.latitude}
+              </Popup>
+            </CircleMarker>
+          ))}
+          <MyComponent clickedSensor={clickedSensor} sensorData={sensorData} />
+        </MapContainer>
+      </div>
     </>
   );
 };

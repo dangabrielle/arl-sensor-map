@@ -5,11 +5,13 @@ import { socket } from "../../socket";
 import React from "react";
 import LoadMap from "./LoadMap";
 import { useMap } from "react-leaflet";
+import SideBar from "./SideBar";
 
 type Props = {
   initialData: SensorDataType[];
-  // clickedSensor: Coordinates | null
 };
+
+type Coordinates = [latitude: number, longitude: number];
 
 type SensorDataType = {
   nodeID: string;
@@ -23,14 +25,20 @@ type SensorDataType = {
   employeeId?: string | null;
 };
 
-type Coordinates = [latitude: number, longitude: number];
-
 const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
-  const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
+  // const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
+  const [isSidebarOpen, setIsSideBarOpen] = useState(false);
 
+  function openSideBar() {
+    setIsSideBarOpen(true);
+  }
+
+  function closeSideBar() {
+    setIsSideBarOpen(false);
+  }
   useEffect(() => {
     console.log(
       "socket server URL:",
@@ -77,35 +85,31 @@ const SensorData = ({ initialData }: Props) => {
     };
   }, []);
 
-  function handleClick(latitude: number, longitude: number) {
-    const clickedData: Coordinates = [latitude, longitude];
-
-    setClickedSensor(clickedData);
-    console.log(clickedData);
-  }
-
   return (
     <div>
-      <h1>Real-Time Sensor Data</h1>
-      <p>Connection status: {isConnected ? "Connected" : "Disconnected"}</p>
-      <p>Transport: {transport}</p>
-      <ul className="flex justify-center items-center">
-        {sensorData.map((data, index) => (
-          <li key={index}>
-            <button
-              className="m-2 p-4 bg-blue-400 rounded shadow-md transform transition-transform duration-200 ease-in-out hover:bg-blue-300 hover:scale-100 active:scale-105"
-              onClick={() => handleClick(data.latitude, data.longitude)}
-            >
-              Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
-              {data.humidity}, Latitude: {data.latitude}, Longitude:{" "}
-              {data.longitude}, Time: {data.time}, Battery: {data.battery},
-              Health: {data.health}
-            </button>
-          </li>
-        ))}
-      </ul>
+      <div className="z-50 flex p-0.5 absolute w-10/12 justify-between bg-transparent pl-3 pr-3 pt-2 pb-2 text-white ml-20">
+        <h1 className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
+          Real-Time Sensor Data
+        </h1>
+        <p className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
+          Connection status: {isConnected ? "Connected" : "Disconnected"}
+        </p>
+        <p className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
+          Transport: {transport}
+        </p>
+        <button
+          onClick={openSideBar}
+          className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded active:bg-blue-400 "
+        >
+          View Sensors
+        </button>
+      </div>
 
-      <LoadMap sensorData={sensorData} clickedSensor={clickedSensor} />
+      <SideBar
+        sensorData={sensorData}
+        isOpen={isSidebarOpen}
+        closeBar={closeSideBar}
+      />
     </div>
   );
 };

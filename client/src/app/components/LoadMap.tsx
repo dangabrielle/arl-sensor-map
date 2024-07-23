@@ -23,7 +23,6 @@ type SensorDataType = {
 };
 
 const LoadMap = ({ sensorData, clickedSensor }: Props) => {
-  console.log("in loadmap", clickedSensor);
   const Map = useMemo(
     () =>
       nextDynamic(() => import("./Map"), {
@@ -33,7 +32,7 @@ const LoadMap = ({ sensorData, clickedSensor }: Props) => {
     []
   );
   return (
-    <div className="bg-white-700 mx-auto my-5 w-[98%] h-[480px]">
+    <div>
       <Map sensorData={sensorData} clickedSensor={clickedSensor} />
     </div>
   );
