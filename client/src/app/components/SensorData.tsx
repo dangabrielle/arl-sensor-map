@@ -91,7 +91,7 @@ const SensorData = ({ initialData }: Props) => {
   return (
     <>
       <div
-        className="z-50 flex absolute w-full ml-5 justify-evenly bg-transparent p-3 text-white content-center items-center "
+        className="z-50 flex absolute w-full ml-10 justify-evenly bg-transparent pt-3 text-white content-center items-center "
         // style={{
         //   fontSize: "initial",
         //   color: "initial",
@@ -99,39 +99,41 @@ const SensorData = ({ initialData }: Props) => {
         //   fontWeight: "initial",
         // }}
       >
-        <img
-          src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
-          alt="UH Logo"
-          className="rounded-full max-w-24 min-w-10"
-        />
-        <h1 className="relative text-white z-50 bg-sky-700 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md">
-          Applied Research Laboratory
-        </h1>
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ">
+        <div className="flex items-center">
+          <img
+            src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
+            alt="UH Logo"
+            className="rounded-full max-w-24 min-w-10 mr-auto ml-5 "
+          />
+          <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md mr-auto ml-2 text-center">
+            <b>APPLIED RESEARCH LABORATORY</b> <br /> University of Hawai'i
+          </h1>
+        </div>
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
           Connection status: {isConnected ? "Connected" : "Disconnected"}
         </p>
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ">
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
           Transport: {transport}
         </p>
         <button
           onClick={openSideBar}
-          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400  "
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 ml-auto"
         >
           View Sensors
         </button>
-        <div>
+        <div className="ml-auto">
           {user ? (
-            <div className="flex justify-end items-center ">
+            <div className="flex items-center ml-auto mr-10">
               <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 mr-3 rounded">
                 <a href="/api/auth/logout">Logout</a>
               </div>
               <img src={userImage} alt="" className="rounded-full w-4/12 " />
             </div>
           ) : (
-            <div className="flex justify-between ">
+            <div className="flex items-center ml-auto mr-20">
               <a
                 href="/api/auth/login"
-                className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded"
+                className="relative text-white z-50 bg-gray-400  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded p-2"
               >
                 Login / Sign Up
               </a>
