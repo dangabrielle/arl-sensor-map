@@ -109,7 +109,7 @@ const SensorData = ({ initialData }: Props) => {
             className="rounded-full max-w-24 min-w-10 mr-auto ml-5 "
           />
           <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md mr-auto ml-2 text-center">
-            <b>APPLIED RESEARCH LABORATORY</b> <br /> University of Hawai'i
+            <b>APPLIED RESEARCH LABORATORY</b> <br /> University of Hawai&apos;i
           </h1>
         </div>
         <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
