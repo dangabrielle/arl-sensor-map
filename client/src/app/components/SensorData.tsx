@@ -100,9 +100,12 @@ const SensorData = ({ initialData }: Props) => {
         // }}
       >
         <div className="flex items-center">
-          <img
+          <Image
             src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
             alt="UH Logo"
+            width={100}
+            height={100}
+            layout="responsive"
             className="rounded-full max-w-24 min-w-10 mr-auto ml-5 "
           />
           <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md mr-auto ml-2 text-center">
