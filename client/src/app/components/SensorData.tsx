@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import { socket } from "../../socket";
 import React from "react";
+import Image from "next/image";
 import LoadMap from "./LoadMap";
 import { useMap } from "react-leaflet";
 import SideBar from "./SideBar";
+import { useUser } from "@auth0/nextjs-auth0/client";
 
 type Props = {
   initialData: SensorDataType[];
@@ -31,7 +33,12 @@ const SensorData = ({ initialData }: Props) => {
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
   // const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
   const [isSidebarOpen, setIsSideBarOpen] = useState(false);
-
+  const { user, error, isLoading } = useUser();
+  // if (isLoading) return <div>Loading...</div>;
+  // if (error) return <div>{error.message}</div>;
+  const userImage =
+    user?.picture ||
+    "https://www.businessnetworks.com/sites/default/files/default_images/default-avatar.png";
   function openSideBar() {
     setIsSideBarOpen(true);
   }
@@ -40,10 +47,6 @@ const SensorData = ({ initialData }: Props) => {
     setIsSideBarOpen(false);
   }
   useEffect(() => {
-    console.log(
-      "socket server URL:",
-      process.env.NEXT_PUBLIC_WEBSOCKET_SERVER_URL
-    );
     const onConnect = () => {
       setIsConnected(true);
       setTransport(socket.io.engine.transport.name);
@@ -86,23 +89,55 @@ const SensorData = ({ initialData }: Props) => {
   }, []);
 
   return (
-    <div>
-      <div className="z-50 flex p-0.5 absolute w-10/12 justify-between bg-transparent pl-3 pr-3 pt-2 pb-2 text-white ml-20">
-        <h1 className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
-          Real-Time Sensor Data
+    <>
+      <div
+        className="z-50 flex absolute w-full ml-5 justify-evenly bg-transparent p-3 text-white content-center items-center "
+        // style={{
+        //   fontSize: "initial",
+        //   color: "initial",
+        //   fontFamily: "initial",
+        //   fontWeight: "initial",
+        // }}
+      >
+        <img
+          src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
+          alt="UH Logo"
+          className="rounded-full max-w-24 min-w-10"
+        />
+        <h1 className="relative text-white z-50 bg-sky-700 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md">
+          Applied Research Laboratory
         </h1>
-        <p className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ">
           Connection status: {isConnected ? "Connected" : "Disconnected"}
         </p>
-        <p className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded">
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ">
           Transport: {transport}
         </p>
         <button
           onClick={openSideBar}
-          className=" text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded active:bg-blue-400 "
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400  "
         >
           View Sensors
         </button>
+        <div>
+          {user ? (
+            <div className="flex justify-end items-center ">
+              <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 mr-3 rounded">
+                <a href="/api/auth/logout">Logout</a>
+              </div>
+              <img src={userImage} alt="" className="rounded-full w-4/12 " />
+            </div>
+          ) : (
+            <div className="flex justify-between ">
+              <a
+                href="/api/auth/login"
+                className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 rounded"
+              >
+                Login / Sign Up
+              </a>
+            </div>
+          )}
+        </div>
       </div>
 
       <SideBar
@@ -110,7 +145,7 @@ const SensorData = ({ initialData }: Props) => {
         isOpen={isSidebarOpen}
         closeBar={closeSideBar}
       />
-    </div>
+    </>
   );
 };
 
