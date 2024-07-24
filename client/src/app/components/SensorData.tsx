@@ -130,7 +130,13 @@ const SensorData = ({ initialData }: Props) => {
               <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 mr-3 rounded">
                 <a href="/api/auth/logout">Logout</a>
               </div>
-              <img src={userImage} alt="" className="rounded-full w-4/12 " />
+              <Image
+                src={userImage}
+                className="rounded-full w-4/12 mr-10 "
+                height={100}
+                width={100}
+                alt=""
+              />
             </div>
           ) : (
             <div className="flex items-center ml-auto mr-20">

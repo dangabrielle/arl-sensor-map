@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["www.soest.hawaii.edu"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.soest.hawaii.edu",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
