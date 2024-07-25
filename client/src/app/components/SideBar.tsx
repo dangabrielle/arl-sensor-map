@@ -28,7 +28,6 @@ const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
     const clickedData: Coordinates = [latitude, longitude];
 
     setClickedSensor(clickedData);
-    console.log(clickedData);
   }
 
   return (

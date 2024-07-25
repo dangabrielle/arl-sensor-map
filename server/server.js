@@ -197,7 +197,7 @@ async function getAlphaSensor() {
   }
 }
 
-const alphaSensorInterval = setInterval(getAlphaSensor, 60000);
+// const alphaSensorInterval = setInterval(getAlphaSensor, 60000);
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {

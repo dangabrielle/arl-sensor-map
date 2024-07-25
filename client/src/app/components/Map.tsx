@@ -37,7 +37,6 @@ const MyComponent = ({ clickedSensor, sensorData }: Props) => {
 
   // Update map view when clickedSensor changes
   if (clickedSensor) {
-    console.log("after change", clickedSensor);
     map.setView(clickedSensor, 13); // Set view to the clickedSensor location with zoom level 13
   }
 
@@ -45,8 +44,6 @@ const MyComponent = ({ clickedSensor, sensorData }: Props) => {
 };
 
 const Map = ({ sensorData, clickedSensor }: Props) => {
-  console.log("clicked", clickedSensor);
-
   return (
     <>
       <div id="map-container">

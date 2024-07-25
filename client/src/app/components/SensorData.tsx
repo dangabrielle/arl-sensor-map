@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { socket } from "../../socket";
 import React from "react";
 import Image from "next/image";
-import LoadMap from "./LoadMap";
+import { useRef } from "react";
 import { useMap } from "react-leaflet";
 import SideBar from "./SideBar";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -31,9 +31,17 @@ const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
-  // const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);
+  const [timeElapsed, setTimeElapsed] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
   const [isSidebarOpen, setIsSideBarOpen] = useState(false);
   const { user, error, isLoading } = useUser();
+  // used to store interval ID so it can be cleared when socket connection is closed
+  // useRef hook only renders once and ensures only one interval is running at a time
+  let timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
   const userImage =
@@ -46,16 +54,54 @@ const SensorData = ({ initialData }: Props) => {
   function closeSideBar() {
     setIsSideBarOpen(false);
   }
+
+  function startTimer() {
+    const start = Date.now();
+    timerRef.current = setInterval(() => {
+      const elapsedTime = Date.now() - start; // result in miliseconds
+
+      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+
+      // 86,400,000 ms = 1d
+      // convert remainder ms to hrs
+      const hours = Math.floor(
+        (elapsedTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+
+      // 3,600,000 ms = 1hr
+      // convert remainder ms to min
+      const minutes = Math.floor(
+        (elapsedTime % (1000 * 60 * 60)) / (1000 * 60)
+      );
+
+      // 60,000 ms = 1 min
+      // calculate remainder ms left after accounts for minutes
+      // convert ms to s (1000 ms = 1 s)
+      const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+      console.log(seconds);
+
+      setTimeElapsed({ days, hours, minutes, seconds });
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }
   useEffect(() => {
     const onConnect = () => {
       setIsConnected(true);
       setTransport(socket.io.engine.transport.name);
+      startTimer();
       console.log("Connected to server");
     };
 
     const onDisconnect = () => {
       setIsConnected(false);
       setTransport("N/A");
+      stopTimer();
       console.log("Disconnected from server");
     };
 
@@ -113,16 +159,18 @@ const SensorData = ({ initialData }: Props) => {
           </h1>
         </div>
         <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
-          Connection status: {isConnected ? "Connected" : "Disconnected"}
+          <b>Connection status:</b>
+          {isConnected
+            ? ` Active: ${timeElapsed.days} days ${timeElapsed.hours} hrs ${timeElapsed.minutes} min
+          ${timeElapsed.seconds} s`
+            : "Disconnected"}
         </p>
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
-          Transport: {transport}
-        </p>
+
         <button
           onClick={openSideBar}
           className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 ml-auto"
         >
-          View Sensors
+          View Sensors ({sensorData.length})
         </button>
         <div className="ml-auto">
           {user ? (
