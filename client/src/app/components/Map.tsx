@@ -6,6 +6,7 @@ import {
   Marker,
   Popup,
   CircleMarker,
+  Tooltip,
 } from "react-leaflet";
 import { useMap } from "react-leaflet/hooks";
 
@@ -37,10 +38,19 @@ const MyComponent = ({ clickedSensor, sensorData }: Props) => {
 
   // Update map view when clickedSensor changes
   if (clickedSensor) {
-    map.setView(clickedSensor, 13); // Set view to the clickedSensor location with zoom level 13
+    // map.setView(clickedSensor, 10),
+    //   {
+    //     animate: true,
+    //     duration: 0.25,
+    //     easeLinearity: 0.25,
+    //     noMoveStart: false,
+    //   }; // Set view to the clickedSensor location with zoom level 13
+    map.flyTo(clickedSensor);
+    clickedSensor = null;
+    // map.stop();
   }
 
-  return null; // or return any other JSX if needed
+  return null;
 };
 
 const Map = ({ sensorData, clickedSensor }: Props) => {
@@ -61,11 +71,16 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
               fillColor="#d12e4f"
               fillOpacity={0.5}
             >
-              <Popup>
+              {/* <Popup>
                 Node ID: {data.nodeID} <br />
                 Longitude: {data.longitude} <br />
                 Latitude: {data.latitude}
-              </Popup>
+              </Popup> */}
+              <Tooltip>
+                Node ID: {data.nodeID} <br />
+                Longitude: {data.longitude} <br />
+                Latitude: {data.latitude}
+              </Tooltip>
             </CircleMarker>
           ))}
           <MyComponent clickedSensor={clickedSensor} sensorData={sensorData} />
