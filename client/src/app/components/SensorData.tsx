@@ -163,7 +163,7 @@ const SensorData = ({ initialData }: Props) => {
           {isConnected
             ? ` Active: ${timeElapsed.days} days ${timeElapsed.hours} hrs ${timeElapsed.minutes} min
           ${timeElapsed.seconds} s`
-            : "Disconnected"}
+            : " Disconnected"}
         </p>
 
         <button

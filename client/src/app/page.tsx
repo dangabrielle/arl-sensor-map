@@ -1,29 +1,12 @@
-import prisma from "../../lib/prisma";
-import SensorData from "./components/SensorData";
-import LoadMap from "./components/LoadMap";
-// render routes dynamically at request time
-export const dynamic = "force-dynamic";
+"use client";
 
-async function getData() {
-  const initialSensorData = await prisma.data.findMany();
-  // Converts Prisma Decimal type to Typescript number
-  const formattedSensorData = initialSensorData.map((data) => ({
-    ...data,
-    latitude: Number(data.latitude),
-    longitude: Number(data.longitude),
-    temp: Number(data.temp),
-  }));
-  return formattedSensorData;
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Page() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("/login");
+  }, [router]);
+  return null;
 }
-
-const HomePage = async () => {
-  const initialData = await getData();
-
-  return (
-    <>
-      <SensorData initialData={initialData} />
-    </>
-  );
-};
-
-export default HomePage;
