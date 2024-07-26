@@ -29,7 +29,6 @@ type SensorDataType = {
 
 const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
-  const [transport, setTransport] = useState("N/A");
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
   const [timeElapsed, setTimeElapsed] = useState({
     days: 0,
@@ -93,14 +92,14 @@ const SensorData = ({ initialData }: Props) => {
   useEffect(() => {
     const onConnect = () => {
       setIsConnected(true);
-      setTransport(socket.io.engine.transport.name);
+
       startTimer();
       console.log("Connected to server");
     };
 
     const onDisconnect = () => {
       setIsConnected(false);
-      setTransport("N/A");
+
       stopTimer();
       console.log("Disconnected from server");
     };

@@ -1,18 +1,12 @@
 "use client";
 
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  CircleMarker,
-  Tooltip,
-} from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import { useMap } from "react-leaflet/hooks";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import { useEffect } from "react";
 
 type Props = {
   sensorData: SensorDataType[];
@@ -33,22 +27,14 @@ type SensorDataType = {
   employeeId?: string | null;
 };
 
-const MyComponent = ({ clickedSensor, sensorData }: Props) => {
+const SingleView = ({ clickedSensor, sensorData }: Props) => {
   const map = useMap();
 
-  // Update map view when clickedSensor changes
-  if (clickedSensor) {
-    // map.setView(clickedSensor, 10),
-    //   {
-    //     animate: true,
-    //     duration: 0.25,
-    //     easeLinearity: 0.25,
-    //     noMoveStart: false,
-    //   }; // Set view to the clickedSensor location with zoom level 13
-    map.flyTo(clickedSensor);
-    clickedSensor = null;
-    // map.stop();
-  }
+  useEffect(() => {
+    if (clickedSensor) {
+      map.flyTo(clickedSensor, 9);
+    }
+  }, [clickedSensor]);
 
   return null;
 };
@@ -57,7 +43,11 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
   return (
     <>
       <div id="map-container">
-        <MapContainer center={[38.46, -121.87]} zoom={7.5}>
+        <MapContainer
+          center={[38.46, -121.87]}
+          zoom={7.5}
+          scrollWheelZoom={true}
+        >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -71,11 +61,6 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
               fillColor="#d12e4f"
               fillOpacity={0.5}
             >
-              {/* <Popup>
-                Node ID: {data.nodeID} <br />
-                Longitude: {data.longitude} <br />
-                Latitude: {data.latitude}
-              </Popup> */}
               <Tooltip>
                 Node ID: {data.nodeID} <br />
                 Longitude: {data.longitude} <br />
@@ -83,7 +68,7 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
               </Tooltip>
             </CircleMarker>
           ))}
-          <MyComponent clickedSensor={clickedSensor} sensorData={sensorData} />
+          <SingleView clickedSensor={clickedSensor} sensorData={sensorData} />
         </MapContainer>
       </div>
     </>
