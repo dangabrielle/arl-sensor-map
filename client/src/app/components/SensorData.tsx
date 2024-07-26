@@ -5,7 +5,7 @@ import { socket } from "../../socket";
 import React from "react";
 import Image from "next/image";
 import { useRef } from "react";
-import { useMap } from "react-leaflet";
+import Link from "next/link";
 import SideBar from "./SideBar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
@@ -31,7 +31,6 @@ const SensorData = ({ initialData }: Props) => {
   const [isConnected, setIsConnected] = useState(false);
   const [sensorData, setSensorData] = useState<SensorDataType[]>(initialData);
   const [timeElapsed, setTimeElapsed] = useState({
-    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -59,8 +58,6 @@ const SensorData = ({ initialData }: Props) => {
     timerRef.current = setInterval(() => {
       const elapsedTime = Date.now() - start; // result in miliseconds
 
-      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
-
       // 86,400,000 ms = 1d
       // convert remainder ms to hrs
       const hours = Math.floor(
@@ -79,7 +76,7 @@ const SensorData = ({ initialData }: Props) => {
       const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
       console.log(seconds);
 
-      setTimeElapsed({ days, hours, minutes, seconds });
+      setTimeElapsed({ hours, minutes, seconds });
     }, 1000);
   }
 
@@ -144,37 +141,48 @@ const SensorData = ({ initialData }: Props) => {
         //   fontWeight: "initial",
         // }}
       >
-        <div className="flex items-center">
-          <Image
-            src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
-            alt="UH Logo"
-            width={100}
-            height={100}
-            layout="responsive"
-            className="rounded-full max-w-24 min-w-10 mr-auto ml-5 "
-          />
-          <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-blue-600  hover:scale-105 rounded shadow-gray-700 shadow-md mr-auto ml-2 text-center">
-            <b>APPLIED RESEARCH LABORATORY</b> <br /> University of Hawai&apos;i
-          </h1>
+        <div>
+          <Link
+            href="https://arl.hawaii.edu/"
+            target="_blank"
+            className="flex items-center hover:scale-105 "
+          >
+            <Image
+              src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
+              alt="UH Logo"
+              width={100}
+              height={100}
+              layout="responsive"
+              className="rounded-full max-w-24 min-w-10 mr-auto ml-5 shadow-gray-700 shadow-md"
+            />
+            <div className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mr-auto ml-3 text-center">
+              <h1>
+                <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
+                Hawai&apos;i
+              </h1>
+            </div>
+          </Link>
         </div>
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded ml-auto ">
+
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded ml-auto ">
           <b>Connection status:</b>
           {isConnected
-            ? ` Active: ${timeElapsed.days} days ${timeElapsed.hours} hrs ${timeElapsed.minutes} min
+            ? ` active -
+              ${timeElapsed.hours} hrs ${timeElapsed.minutes} min
           ${timeElapsed.seconds} s`
             : " Disconnected"}
         </p>
 
         <button
           onClick={openSideBar}
-          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 ml-auto"
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 ml-auto"
         >
           View Sensors ({sensorData.length})
         </button>
         <div className="ml-auto">
           {user ? (
             <div className="flex items-center ml-auto mr-10">
-              <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-blue-600  hover:scale-105 mr-3 rounded">
+              <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-sky-700  hover:scale-105 mr-3 rounded">
                 <a href="/api/auth/logout">Logout</a>
               </div>
               <Image

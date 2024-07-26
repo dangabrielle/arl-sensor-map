@@ -69,7 +69,7 @@
 }
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 18, 36, 68;
+  --background-start-rgb: 18, 68, 60;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -102,12 +102,12 @@ body {
   z-index: 0;
 }
 
-/* .leaflet-layer,
+.leaflet-layer,
 .leaflet-control-zoom-in,
 .leaflet-control-zoom-out,
 .leaflet-control-attribution {
   filter: invert(100%) hue-rotate(200deg) brightness(115%) contrast(90%);
-} */
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
