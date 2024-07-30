@@ -13,8 +13,6 @@ type Props = {
   initialData: SensorDataType[];
 };
 
-type Coordinates = [latitude: number, longitude: number];
-
 type SensorDataType = {
   nodeID: string;
   latitude: number;
@@ -40,8 +38,7 @@ const SensorData = ({ initialData }: Props) => {
   // used to store interval ID so it can be cleared when socket connection is closed
   // useRef hook only renders once and ensures only one interval is running at a time
   let timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  // if (isLoading) return <div>Loading...</div>;
-  // if (error) return <div>{error.message}</div>;
+
   const userImage =
     user?.picture ||
     "https://www.businessnetworks.com/sites/default/files/default_images/default-avatar.png";
@@ -86,6 +83,7 @@ const SensorData = ({ initialData }: Props) => {
       timerRef.current = null;
     }
   }
+
   useEffect(() => {
     const onConnect = () => {
       setIsConnected(true);
@@ -132,20 +130,12 @@ const SensorData = ({ initialData }: Props) => {
 
   return (
     <>
-      <div
-        className="z-50 flex absolute w-full ml-10 justify-evenly bg-transparent pt-3 text-white content-center items-center "
-        // style={{
-        //   fontSize: "initial",
-        //   color: "initial",
-        //   fontFamily: "initial",
-        //   fontWeight: "initial",
-        // }}
-      >
-        <div>
+      <div className="z-50 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-2 absolute md:w-full ml-10 mr-10 md:justify-evenly md:items-start bg-transparent pt-3 text-white">
+        <div className="flex flex-col md:flex-row items-center">
           <Link
             href="https://arl.hawaii.edu/"
             target="_blank"
-            className="flex items-center hover:scale-105 "
+            className="flex items-start hover:scale-105 "
           >
             <Image
               src="https://www.soest.hawaii.edu/cimar/wp-content/uploads/2019/07/university-of-hawaii-manoa-300x300.png"
@@ -153,18 +143,27 @@ const SensorData = ({ initialData }: Props) => {
               width={100}
               height={100}
               layout="responsive"
-              className="rounded-full max-w-24 min-w-10 mr-auto ml-5 shadow-gray-700 shadow-md"
+              className="rounded-full max-w-24 min-w-20 mr-auto ml-5 shadow-gray-700 shadow-md"
             />
-            <div className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mr-auto ml-3 text-center">
-              <h1>
-                <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
-                Hawai&apos;i
-              </h1>
-            </div>
           </Link>
+          <div>
+            <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-3 text-center hover:scale-105">
+              <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
+              Hawai&apos;i
+            </h1>
+            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-3 hover:scale-105">
+              <Link
+                href="/about"
+                // target="_blank"
+                className=" hover:scale-105 "
+              >
+                PROJECT SUMMARY
+              </Link>
+            </div>
+          </div>
         </div>
 
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded ml-auto ">
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded  md:ml-auto text-center">
           <b>Connection status:</b>
           {isConnected
             ? ` active -
@@ -175,32 +174,25 @@ const SensorData = ({ initialData }: Props) => {
 
         <button
           onClick={openSideBar}
-          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 ml-auto"
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 md:ml-auto"
         >
           View Sensors ({sensorData.length})
         </button>
-        <div className="ml-auto">
-          {user ? (
+
+        {/* If user exists, display profile picture */}
+        <div className="m-auto md:ml-auto">
+          {user && (
             <div className="flex items-center ml-auto mr-10">
-              <div className="relative text-white z-50 bg-gray-400 pl-2 pr-2 hover:bg-sky-700  hover:scale-105 mr-3 rounded">
+              <div className="relative text-white z-50 bg-gray-400 p-1 pr-3 pl-3 bg-opacity-70 hover:bg-gray-400 hover:scale-105 mr-3 rounded">
                 <a href="/api/auth/logout">Logout</a>
               </div>
               <Image
                 src={userImage}
-                className="rounded-full w-4/12 mr-10 "
-                height={100}
-                width={100}
+                className="rounded-full w-full max-w-16 min-w-10"
+                height={35}
+                width={35}
                 alt=""
               />
-            </div>
-          ) : (
-            <div className="flex items-center ml-auto mr-20">
-              <a
-                href="/api/auth/login"
-                className="relative text-white z-50 bg-gray-400  hover:bg-blue-600 bg-opacity-70 hover:scale-105 rounded p-2"
-              >
-                Login / Sign Up
-              </a>
             </div>
           )}
         </div>
