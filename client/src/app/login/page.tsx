@@ -5,7 +5,7 @@ import Image from "next/image";
 const page = () => {
   return (
     <>
-      <Particles className="absolute" />
+      <Particles className="absolute z-0 w-full h-full" />
       <div className="flex flex-col items-center justify-center relative h-full w-full">
         <Globe className="z-50 relative -mb-10 -mt-10" />
         <div className="relative justify-center text-center ">
