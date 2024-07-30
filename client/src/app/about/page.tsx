@@ -1,7 +1,12 @@
 import React from "react";
+import Particles from "../components/Particles";
 
 const page = () => {
-  return <div>page</div>;
+  return (
+    <>
+      <Particles />
+    </>
+  );
 };
 
 export default page;

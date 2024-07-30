@@ -143,15 +143,21 @@ const SensorData = ({ initialData }: Props) => {
               width={100}
               height={100}
               layout="responsive"
-              className="rounded-full max-w-24 min-w-20 mr-auto ml-5 shadow-gray-700 shadow-md"
+              className="rounded-full max-w-28 min-w-20 mr-auto ml-5 shadow-gray-700 shadow-md"
             />
           </Link>
           <div>
-            <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-3 text-center hover:scale-105">
-              <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
-              Hawai&apos;i
-            </h1>
-            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-3 hover:scale-105">
+            <Link
+              href="https://arl.hawaii.edu/"
+              target="_blank"
+              className="flex items-start hover:scale-105 "
+            >
+              <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-4 text-center hover:scale-105">
+                <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
+                Hawai&apos;i
+              </h1>
+            </Link>
+            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-4 hover:scale-105">
               <Link
                 href="/about"
                 // target="_blank"
