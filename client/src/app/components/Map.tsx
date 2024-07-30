@@ -32,7 +32,7 @@ const SingleView = ({ clickedSensor, sensorData }: Props) => {
 
   useEffect(() => {
     if (clickedSensor) {
-      map.flyTo(clickedSensor, 9);
+      map.flyTo(clickedSensor, 8);
     }
   }, [clickedSensor]);
 
@@ -43,11 +43,7 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
   return (
     <>
       <div id="map-container">
-        <MapContainer
-          center={[38.46, -121.87]}
-          zoom={7.5}
-          scrollWheelZoom={true}
-        >
+        <MapContainer center={[38.46, -121.87]} zoom={4} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -19,7 +19,6 @@ type SensorDataType = {
   humidity: number;
   battery: number;
   health: string;
-  employeeId?: string | null;
 };
 
 const LoadMap = ({ sensorData, clickedSensor }: Props) => {
