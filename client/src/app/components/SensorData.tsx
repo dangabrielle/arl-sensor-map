@@ -130,7 +130,7 @@ const SensorData = ({ initialData }: Props) => {
 
   return (
     <>
-      <div className="z-50 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-2 absolute md:w-full ml-10 mr-10 md:justify-evenly md:items-start bg-transparent pt-3 text-white">
+      <div className="z-50 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-2 absolute md:w-full ml-10 mr-10 md:justify-evenly md:items-start bg-transparent pt-5 text-white">
         <div className="flex flex-col md:flex-row items-center">
           <Link
             href="https://arl.hawaii.edu/"
@@ -143,7 +143,7 @@ const SensorData = ({ initialData }: Props) => {
               width={100}
               height={100}
               layout="responsive"
-              className="rounded-full max-w-28 min-w-20 mr-auto ml-5 shadow-gray-700 shadow-md"
+              className="rounded-full md:max-w-28 max-w-16 mr-auto ml-5 shadow-gray-700 shadow-md"
             />
           </Link>
           <div>
@@ -152,12 +152,12 @@ const SensorData = ({ initialData }: Props) => {
               target="_blank"
               className="flex items-start hover:scale-105 "
             >
-              <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-4 text-center text-xs md:text-base hover:scale-105">
+              <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-5 text-center text-xs md:text-base hover:scale-105">
                 <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
                 Hawai&apos;i
               </h1>
             </Link>
-            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-4 text-xs md:text-base hover:scale-105">
+            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-5 text-xs md:text-base hover:scale-105">
               <Link
                 href="/about"
                 // target="_blank"
@@ -186,10 +186,10 @@ const SensorData = ({ initialData }: Props) => {
         </button>
 
         {/* If user exists, display profile picture */}
-        <div className="m-auto md:ml-auto">
+        <div className="m-auto items-start md:ml-auto">
           {user && (
             <div className="flex items-center ml-auto mr-10">
-              <div className="relative text-white z-50 bg-gray-400 p-1 pr-3 pl-3 bg-opacity-70 hover:bg-gray-400 hover:scale-105 mr-3 rounded text-xs md:text-base">
+              <div className="relative text-white z-50 bg-gray-400 p-1 pr-3 pl-3 bg-opacity-70 hover:bg-gray-400 hover:scale-105 mr-3 rounded text-xs md:text-base -mt-2.5">
                 <a href="/api/auth/logout">Logout</a>
               </div>
               <Image
