@@ -152,12 +152,12 @@ const SensorData = ({ initialData }: Props) => {
               target="_blank"
               className="flex items-start hover:scale-105 "
             >
-              <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-4 text-center hover:scale-105">
+              <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-4 text-center text-xs md:text-base hover:scale-105">
                 <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
                 Hawai&apos;i
               </h1>
             </Link>
-            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-4 hover:scale-105">
+            <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded shadow-gray-700 shadow-md text-center ml-4 text-xs md:text-base hover:scale-105">
               <Link
                 href="/about"
                 // target="_blank"
@@ -169,7 +169,7 @@ const SensorData = ({ initialData }: Props) => {
           </div>
         </div>
 
-        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded  md:ml-auto text-center">
+        <p className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded  md:ml-auto text-center text-xs md:text-base">
           <b>Connection status:</b>
           {isConnected
             ? ` active -
@@ -180,7 +180,7 @@ const SensorData = ({ initialData }: Props) => {
 
         <button
           onClick={openSideBar}
-          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 md:ml-auto"
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded active:bg-blue-400 md:ml-auto text-xs md:text-base"
         >
           View Sensors ({sensorData.length})
         </button>
@@ -189,7 +189,7 @@ const SensorData = ({ initialData }: Props) => {
         <div className="m-auto md:ml-auto">
           {user && (
             <div className="flex items-center ml-auto mr-10">
-              <div className="relative text-white z-50 bg-gray-400 p-1 pr-3 pl-3 bg-opacity-70 hover:bg-gray-400 hover:scale-105 mr-3 rounded">
+              <div className="relative text-white z-50 bg-gray-400 p-1 pr-3 pl-3 bg-opacity-70 hover:bg-gray-400 hover:scale-105 mr-3 rounded text-xs md:text-base">
                 <a href="/api/auth/logout">Logout</a>
               </div>
               <Image

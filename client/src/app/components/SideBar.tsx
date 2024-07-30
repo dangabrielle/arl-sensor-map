@@ -33,7 +33,7 @@ const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 h-full left-3/4 text-white transition-transform transform z-50 overflow-auto shadow-2xl ${
+        className={`fixed top-0 right-0 h-full left-1/2 md:left-3/4 text-white transition-transform transform z-50 overflow-auto ${
           isOpen ? "translate-x-100" : "translate-x-full"
         } `}
       >
@@ -48,7 +48,7 @@ const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
               {sensorData.map((data, index) => (
                 <li key={index}>
                   <button
-                    className="mb-3 p-4 bg-blue-400 rounded shadow-md transform transition-transform duration-200 ease-in-out hover:bg-blue-300 hover:scale-100 active:scale-105"
+                    className="mb-3 p-4 bg-blue-400 rounded shadow-md transform transition-transform duration-200 ease-in-out hover:bg-blue-300 hover:scale-100 active:scale-105 text-xs md:text-base"
                     onClick={() => handleClick(data.latitude, data.longitude)}
                   >
                     Node ID: {data.nodeID}, Temperature: {data.temp}, Humidity:{" "}
