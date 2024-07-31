@@ -164,7 +164,7 @@ const SensorData = ({ initialData }: Props) => {
               </h1>
             </Link>
             <div className="relative text-white bg-green-800 p-2 mt-2 bg-opacity-70 hover:bg-emerald-700 rounded-md text-center ml-5 text-xs md:text-sm lg:text-base hover:scale-105">
-              <Link href="/about" className=" hover:scale-105 ">
+              <Link href="/about" className="hover:scale-105 hover:font-bold">
                 PROJECT SUMMARY
               </Link>
             </div>

@@ -6,6 +6,8 @@ import { useMap } from "react-leaflet/hooks";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
+import "../globals.css";
+import L from "leaflet";
 import { useEffect } from "react";
 
 type Props = {
@@ -32,7 +34,7 @@ const SingleView = ({ clickedSensor, sensorData }: Props) => {
 
   useEffect(() => {
     if (clickedSensor) {
-      map.flyTo(clickedSensor, 8);
+      map.flyTo(clickedSensor, 6);
     }
   }, [clickedSensor]);
 
@@ -43,7 +45,7 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
   return (
     <>
       <div id="map-container">
-        <MapContainer center={[38.46, -121.87]} zoom={4} scrollWheelZoom={true}>
+        <MapContainer center={[38.46, -121.87]} zoom={5} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -56,6 +58,7 @@ const Map = ({ sensorData, clickedSensor }: Props) => {
               color="#d12e4f"
               fillColor="#d12e4f"
               fillOpacity={0.5}
+              className="pulsatingIcon"
             >
               <Tooltip>
                 Node ID: {data.nodeID} <br />
