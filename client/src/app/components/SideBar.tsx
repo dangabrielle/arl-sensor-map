@@ -33,7 +33,7 @@ const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 h-full left-1/2 md:left-3/4  text-white transition-transform transform z-50 overflow-auto ${
+        className={`fixed top-0 right-0 h-full left-1/2 md:left-3/4 text-white transition-transform transform z-50 overflow-auto ${
           isOpen ? "translate-x-100" : "translate-x-full"
         } `}
       >
@@ -47,12 +47,12 @@ const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
               close
             </button>
           </div>
-          <div>
-            <ul className="absolute flex-col justify-center 2xl:w-11/12 mt-2 text-center ml-6">
+          <div className="absolute flex-col mt-2 w-11/12 mr-6 text-center ml-6">
+            <ul>
               {sensorData.map((data, index) => (
                 <li
                   key={index}
-                  className="mt-1 mb-3 mr-3 p-4 bg-sky-800 bg-opacity-60 hover:scale-105 rounded-md shadow-md transform transition-transform duration-200 ease-in-out hover:bg-sky-800 active:scale-105 text-xs md:text-md lg:text-base"
+                  className="mt-1 mb-3 mr-3 p-4 bg-sky-800 bg-opacity-70 hover:scale-105 rounded-md shadow-md transform transition-transform duration-200 ease-in-out hover:bg-sky-800 active:scale-105 text-xs md:text-md lg:text-base"
                 >
                   <button
                     onClick={() => handleClick(data.latitude, data.longitude)}

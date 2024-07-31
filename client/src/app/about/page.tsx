@@ -2,6 +2,7 @@
 import React from "react";
 import Particles from "../components/Particles";
 import GradualSpacing from "../components/GradualSpacingText";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const page = () => {
@@ -23,25 +24,25 @@ const page = () => {
         </div>
         <nav className="flex items-center justify-evenly ml-10 mr-10 mb-2 w-full text-sm md:text-lg font-bold">
           <div className="hover:bg-slate-300 hover:scale-105 p-1 pr-3 pl-3 rounded">
-            <a href="https://github.com/dangabrielle" target="_blank">
+            <Link href="https://github.com/dangabrielle" target="_blank">
               Github
-            </a>
+            </Link>
           </div>
           <div className="hover:bg-slate-300 hover:scale-105 p-1 pr-3 pl-3 rounded">
-            <a
+            <Link
               href="https://www.linkedin.com/in/gabrielle-dang/"
               target="_blank"
             >
               LinkedIn
-            </a>
+            </Link>
           </div>
           <div className="hover:bg-slate-300 hover:scale-105 p-1 pr-3 pl-3 rounded">
-            <a href="/map">Map</a>
+            <Link href="/map">Map</Link>
           </div>
           <div className="hover:bg-slate-300 hover:scale-105 p-1 pr-3 pl-3 rounded">
-            <a href="/api/auth/logout" target="_blank">
+            <Link href="/api/auth/logout" target="_blank">
               Logout
-            </a>
+            </Link>
           </div>
         </nav>
         <motion.div
@@ -54,58 +55,65 @@ const page = () => {
 
           <h3 className="text-sm md:text-base">
             Sensor data visualization is a critical requirement for common
-            operations at the Applied Research Laboratory (ARL). Currently, ARL
-            utilizes open source software for real-time visualization, such as
-            <a
+            operations at the Applied Research Laboratory (ARL). Common
+            Operating Pictures (COPs) are essential for enhancing situational
+            awareness and providing critical information to the Department of
+            Defense (DoD) in order to make informed decisions. This project is
+            aimed at creating a Common Operating Picture prototype displaying
+            real-time sensor locations through an interactive map. Currently,
+            ARL utilizes open source software for real-time visualization, such
+            as
+            <Link
               href="https://github.com/brian7704/OpenTAKServer"
               target="_blank "
               className="font-bold text-blue-800 hover:bg-slate-300 rounded p-1 px-1"
             >
-              OpenTak.
-            </a>
-            This past summer, I developed a customized implementation of OpenTak
-            using current emerging web technologies. To do this, I utilized the
-            <a
+              OpenTak,
+            </Link>
+            however, this project seeks to develop a tailored solution that
+            meets specific needs by the ARL, using current emerging web
+            technologies. To do this, I utilized the
+            <Link
               href="https://leafletjs.com/index.html"
               target="_blank "
               className="font-bold text-blue-800  hover:bg-slate-300 rounded p-1 px-1"
             >
               NextJS
-            </a>
+            </Link>
             frontend framework and the React
-            <a
+            <Link
               href="https://nextjs.org/docs"
               target="_blank "
               className="font-bold text-blue-800  hover:bg-slate-300 rounded p-1 px-1"
             >
               Leaflet
-            </a>
-            library to render an interactive map displaying real-time sensor
-            locations. As sensors typically communicate using various
-            transmission protocols, I incorporated 3 of the most common:
-            <a
+            </Link>
+            library to render an interactive map on the client-side. As sensors
+            typically communicate using various transmission protocols, I
+            incorporated 3 of the most common:
+            <Link
               href="https://developer.mozilla.org/en-US/docs/Web/HTTP"
               target="_blank "
               className="font-bold text-blue-800  hover:bg-slate-300 rounded p-1 px-1"
             >
               HTTP
-            </a>
+            </Link>
             /
-            <a
+            <Link
               href="https://developer.mozilla.org/en-US/docs/Web/HTTP"
               target="_blank "
               className="font-bold text-blue-800 hover:bg-slate-300 rounded p-1 px-1"
             >
               Websocket
-            </a>
+            </Link>
             /
-            <a
+            <Link
               href="https://developer.mozilla.org/en-US/docs/Web/HTTP"
               target="_blank "
               className="font-bold text-blue-800 hover:bg-slate-300 rounded p-1 px-1"
             >
               MQTT
-            </a>
+            </Link>
             via a custom Nodejs server. Other technologies used include Prisma
             Postgres for data storage, Google Auth0/NextJS SDK for
             authentication, and MagicUI/Framer Motion/Tailwind for an
@@ -132,34 +140,34 @@ const page = () => {
           <ul className="text-sm md:text-base ml-5">
             <li>
               •
-              <a
+              <Link
                 href="https://socket.io/docs/v4/troubleshooting-connection-issues/"
                 target="_blank"
                 className="font-bold text-blue-800 hover:bg-slate-100 rounded p-1 px-1"
               >
                 Websocket IO
-              </a>
+              </Link>
             </li>
             <li>
               •
-              <a
+              <Link
                 href="https://www.emqx.com/en/blog/how-to-use-mqtt-in-nodejs"
                 target="_blank"
                 className="font-bold text-blue-800 hover:bg-slate-100 rounded p-1 px-1"
               >
                 Message Queuing Telemetry Transport (MQTT)
-              </a>
+              </Link>
               : Utilized HiveMQ Public Broker and MQTTX for testing
             </li>
             <li>
               •
-              <a
+              <Link
                 href="https://developer.mozilla.org/en-US/docs/Web/HTTP"
                 target="_blank"
                 className="font-bold text-blue-800 hover:bg-slate-100 rounded p-1 px-1"
               >
                 HyperText Transfer Protocol (HTTP)
-              </a>
+              </Link>
             </li>
           </ul>
         </motion.div>
