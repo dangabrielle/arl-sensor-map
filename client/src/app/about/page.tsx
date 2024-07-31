@@ -48,7 +48,7 @@ const page = () => {
           initial={{ x: "-100%", opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ ease: [0.25, 0.1, 0.05, 1.1], duration: 1 }}
-          className="bg-slate-200 bg-opacity-40 ml-10 mr-10 p-5 md:p-9 rounded-lg shadow-md shadow-slate-700"
+          className="bg-slate-200 bg-opacity-40 md:ml-10 md:mr-10 ml-5 mr-5 p-4 md:p-6 rounded-lg shadow-md shadow-slate-700"
         >
           <h1 className="font-bold text-lg md:text-2xl">PURPOSE</h1>
 
