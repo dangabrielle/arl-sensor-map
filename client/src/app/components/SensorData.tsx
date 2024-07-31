@@ -8,6 +8,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import SideBar from "./SideBar";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { motion } from "framer-motion";
 
 type Props = {
   initialData: SensorDataType[];
@@ -130,7 +131,12 @@ const SensorData = ({ initialData }: Props) => {
 
   return (
     <>
-      <div className="z-50 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-2 absolute md:w-11/12 ml-10 mr-10 md:justify-evenly md:items-start bg-transparent pt-5 text-white">
+      <motion.div
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ ease: [0.25, 0.1, 0.05, 1.1], duration: 1 }}
+        className="z-50 flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-2 absolute md:w-11/12 ml-10 mr-10 md:justify-evenly md:items-start bg-transparent pt-5 text-white"
+      >
         <div className="flex flex-col md:flex-row items-center">
           <Link
             href="https://arl.hawaii.edu/"
@@ -198,7 +204,7 @@ const SensorData = ({ initialData }: Props) => {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
       <SideBar
         sensorData={sensorData}

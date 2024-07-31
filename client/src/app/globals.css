@@ -117,12 +117,3 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
-.text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-/* @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */

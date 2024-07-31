@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 import Particles from "../components/Particles";
 import GradualSpacing from "../components/GradualSpacingText";
+import { motion } from "framer-motion";
+
 const page = () => {
   return (
     <>
@@ -41,7 +44,12 @@ const page = () => {
             </a>
           </div>
         </nav>
-        <div className="bg-slate-200 bg-opacity-40 ml-10 mr-10 p-5 md:p-9 rounded-lg shadow-md shadow-slate-700">
+        <motion.div
+          initial={{ x: "-100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ ease: [0.25, 0.1, 0.05, 1.1], duration: 1 }}
+          className="bg-slate-200 bg-opacity-40 ml-10 mr-10 p-5 md:p-9 rounded-lg shadow-md shadow-slate-700"
+        >
           <h1 className="font-bold text-lg md:text-2xl">PURPOSE</h1>
 
           <h3 className="text-sm md:text-base">
@@ -100,7 +108,8 @@ const page = () => {
             </a>
             via a custom Nodejs server. Other technologies used include Prisma
             Postgres for data storage, Google Auth0/NextJS SDK for
-            authentication, MagicUI/Tailwind for an interactive user interface.
+            authentication, and MagicUI/Framer Motion/Tailwind for an
+            interactive user interface.
           </h3>
           <h1 className="font-bold text-lg md:text-2xl mt-5">NEXT STEPS</h1>
           <h3 className="text-sm md:text-base">
@@ -153,7 +162,7 @@ const page = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
     </>
   );
