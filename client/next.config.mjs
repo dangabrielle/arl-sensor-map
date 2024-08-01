@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com",
+        hostname: "www.soest.hawaii.edu",
         port: "",
         pathname: "/**",
       },
