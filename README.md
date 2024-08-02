@@ -1,6 +1,6 @@
 # ARL SENSOR MAP
 
-Applied Research Laboratory, University of Hawai'i
+Applied Research Laboratory, University of Hawai'i <br />
 P3I Summer Internship 2024
 
 ### Goal:
