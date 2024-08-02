@@ -15,7 +15,7 @@ Create a Common Operating Picture software prototype designed for situational aw
 
 ### Technologies used:
 
-NextJS, React, Javascript, Typescript, Tailwind, CSS, HTML, Nodejs, WebsocketIO, MQTT, HTTP, Prisma, Postgres, Vercel, Heroku, Framer Motion, MagicUI, Google Auth0/NextJS SDK, VSCode
+NextJS, React, Javascript, Typescript, Tailwind, CSS, HTML, Nodejs, Express, WebsocketIO, MQTT, HTTP, Prisma, Postgres, Vercel, Heroku, Framer Motion, MagicUI, Google Auth0/NextJS SDK, VSCode
 
 ### Installation:
 
