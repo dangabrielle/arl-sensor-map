@@ -5,22 +5,14 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const mqtt = require("mqtt");
 const fetch = require("node-fetch");
-
 const prisma = require("./db/prisma");
-
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  },
-});
 
 app.use(cors());
 dotenv.config();
 
+// MQTT Connection using HiveMQ Public Broker
 const protocol = "mqtt";
 const host = "broker.emqx.io";
 const port = "1883";
@@ -46,6 +38,15 @@ client.on("connect", () => {
   });
 });
 
+// WebsocketIO connection
+const io = socketIo(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  },
+});
+
 io.on("connection", (socket) => {
   console.log("Websocket client connected");
 
@@ -54,8 +55,8 @@ io.on("connection", (socket) => {
   });
 });
 
+// Receive sensor data via MQTT
 client.on("message", async (topic, payload) => {
-  console.log("Received Message:", topic, payload.toString());
   const data = JSON.parse(payload.toString());
 
   let existingNode;
@@ -67,9 +68,8 @@ client.on("message", async (topic, payload) => {
         nodeID: data.nodeID,
       },
     });
-    console.log("existing node", existingNode);
   } catch (error) {
-    console.log("Node not found", error);
+    console.error("Unable to find node", error);
   }
   // if node exists, update its new contents
   // if node doesn't exist, add it to db
@@ -89,29 +89,24 @@ client.on("message", async (topic, payload) => {
           health: data.health,
         },
       });
-      console.log("Successfully updated node: ", updatedNode);
+      // Send updated node to client (websocket IO)
       io.emit("newSensorData", updatedNode);
-      console.log("data emitted to websocket client");
     } catch (error) {
-      console.log("Unable to update node: ", error);
+      console.error("Error updating", error);
     }
   } else {
     try {
       newNode = await prisma.data.create({
         data,
       });
-      console.log("Succesfully created a new node: ", newNode);
-    } catch (err) {
-      console.error("Error creating data", err);
-    }
+    } catch (err) {}
+    // Send updated node to client (websocket IO)
     io.emit("newSensorData", newNode);
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello from Express!");
-});
-
+// The following logic is used when querying sensor data from an external server
+// Currently inactive
 async function getAlphaSensor() {
   try {
     const apiKey = process.env.API_KEY;
@@ -145,7 +140,7 @@ async function getAlphaSensor() {
       });
       console.log("existing node", existingNode);
     } catch (error) {
-      console.log("Node not found", error);
+      console.error("Node not found", error);
     }
     // if node exists, update its new contents
     // if node doesn't exist, add it to db
@@ -159,18 +154,12 @@ async function getAlphaSensor() {
             latitude: recentUpdate.lat,
             longitude: recentUpdate.lon,
             time: recentUpdate.updatedAt,
-            // below are currently null, update schema
-            // temp: recentUpdate.temp,
-            // humidity: recentUpdate.humidity,
-            // battery: recentUpdate.batteryLevel,
-            // health: recentUpdate.status, // "health key not in server's object"
           },
         });
-        console.log("Successfully updated node: ", updatedNode);
+        // Send updated node to client (websocket IO)
         io.emit("newSensorData", updatedNode);
-        console.log("data emitted to websocket client");
       } catch (error) {
-        console.log("Unable to update node: ", error);
+        console.error("Unable to update node: ", error);
       }
     } else {
       try {
@@ -197,9 +186,10 @@ async function getAlphaSensor() {
   }
 }
 
+// Commented out code below calls the above function every minute (note it is currently inactive)
 // const alphaSensorInterval = setInterval(getAlphaSensor, 60000);
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
-  console.log(`WebSocket server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
