@@ -2,7 +2,8 @@ import React from "react";
 import Globe from "../components/Globe";
 import Particles from "../components/Particles";
 import Image from "next/image";
-const page = () => {
+
+const login = () => {
   return (
     <>
       <Particles className="absolute z-0 w-full h-full" />
@@ -35,4 +36,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default login;

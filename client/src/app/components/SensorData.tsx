@@ -32,6 +32,7 @@ const SensorData = ({ initialData }: Props) => {
   const userImage =
     user?.picture ||
     "https://www.businessnetworks.com/sites/default/files/default_images/default-avatar.png";
+
   function openSideBar() {
     setIsSideBarOpen(true);
   }
@@ -141,7 +142,7 @@ const SensorData = ({ initialData }: Props) => {
             <Link
               href="https://arl.hawaii.edu/"
               target="_blank"
-              className="flex items-start hover:scale-105 "
+              className="flex items-start hover:scale-105"
             >
               <h1 className="relative text-white z-50 bg-green-800 p-2 pr-3 pl-3 bg-opacity-70 hover:bg-emerald-700 rounded-md shadow-gray-700 shadow-md mt-2 md:mt-0 md:mr-auto ml-5 text-center text-xs md:text-sm lg:text-base hover:scale-105">
                 <b>APPLIED RESEARCH LABORATORY</b> <br /> University of
@@ -167,7 +168,7 @@ const SensorData = ({ initialData }: Props) => {
 
         <button
           onClick={openSideBar}
-          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3  hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded-md active:bg-blue-400 md:ml-auto text-xs md:text-sm lg:text-base"
+          className="relative text-white z-50  bg-sky-700 p-2 pr-3 pl-3 hover:bg-sky-700 bg-opacity-70 hover:scale-105 rounded-md active:bg-blue-400 md:ml-auto text-xs md:text-sm lg:text-base"
         >
           View Sensors ({sensorData.length})
         </button>
