@@ -1,22 +1,21 @@
 # ARL SENSOR MAP
 
-### This project is still in development.
+Applied Research Laboratory, University of Hawai'i
+P3I Summer Internship 2024
 
 ### Goal:
 
 Create a Common Operating Picture software prototype designed for situational awareness and use by the Applied Research Laboratory, Hawai'i. This will consist of a map displaying sensor data updates in real-time, and is aimed to provide critical information for the Department of Defense, in order to make accurate decisions.
 
-### View Deployed ARL Sensor Map:
+### View deployed ARL Sensor Map:
 
 [ARL Sensor Map](https://arl-sensor-map.vercel.app/), or click on the link on the top right corner.
-
-### Map Overview
 
 ![](/client/public/demo.gif)
 
 ### Installation:
 
-Clone repository: `git clone` <br />
+Clone repository: `git clone https://github.com/dangabrielle/arl-sensor-map.git` <br />
 Enter client directory: `cd client` <br />
 Install dependencies: `npm install` or `yarn install` <br />
 Set up environment variables:
@@ -38,3 +37,9 @@ Start dev server: `npm start` on `localhost:3001`
 ### Project Wireframe
 
 ![](/client/public/ARL-Sensor-Map-Wireframe.png)
+
+### Future Enhancements
+
+- Draggable timeline bar displaying sensor locations within the past 12 hours
+- Chat box for real time communication between users
+- Search bar when viewing a long list of sensors
