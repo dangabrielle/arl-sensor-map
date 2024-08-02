@@ -13,6 +13,10 @@ Create a Common Operating Picture software prototype designed for situational aw
 
 ![](/client/public/demo.gif)
 
+### Technologies used:
+
+NextJS, React, Javascript, Typescript, Tailwind, CSS, HTML, Nodejs, WebsocketIO, MQTT, HTTP, Prisma, Postgres, Vercel, Heroku, Framer Motion, MagicUI, Google Auth0/NextJS SDK, VSCode
+
 ### Installation:
 
 Clone repository: `git clone https://github.com/dangabrielle/arl-sensor-map.git` <br />
