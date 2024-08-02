@@ -1,3 +1,6 @@
+// Since still in development process, console.logs are used for logging purposes
+// In the future, will use a more structured / configured logging solution such as Morgan
+
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
