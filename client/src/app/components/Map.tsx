@@ -7,26 +7,12 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 import "../globals.css";
-import L from "leaflet";
+import { SensorDataType, Coordinates } from "../../../types";
 import { useEffect } from "react";
 
 type Props = {
   sensorData: SensorDataType[];
   clickedSensor: Coordinates | null;
-};
-
-type Coordinates = [latitude: number, longitude: number];
-
-type SensorDataType = {
-  nodeID: string;
-  latitude: number;
-  longitude: number;
-  time: string;
-  temp: number;
-  humidity: number;
-  battery: number;
-  health: string;
-  employeeId?: string | null;
 };
 
 const SingleView = ({ clickedSensor, sensorData }: Props) => {

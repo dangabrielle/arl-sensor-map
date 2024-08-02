@@ -9,21 +9,10 @@ import Link from "next/link";
 import SideBar from "./SideBar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { motion } from "framer-motion";
+import { SensorDataType } from "../../../types";
 
 type Props = {
   initialData: SensorDataType[];
-};
-
-type SensorDataType = {
-  nodeID: string;
-  latitude: number;
-  longitude: number;
-  time: string;
-  temp: number;
-  humidity: number;
-  battery: number;
-  health: string;
-  employeeId?: string | null;
 };
 
 const SensorData = ({ initialData }: Props) => {
@@ -90,19 +79,15 @@ const SensorData = ({ initialData }: Props) => {
       setIsConnected(true);
 
       startTimer();
-      console.log("Connected to server");
     };
 
     const onDisconnect = () => {
       setIsConnected(false);
 
       stopTimer();
-      console.log("Disconnected from server");
     };
 
     const onNewSensorData = (data: SensorDataType) => {
-      console.log("Received new sensor data:", data);
-
       setSensorData((prevData) => {
         let idx = prevData.findIndex(
           (current) => current.nodeID == data.nodeID
@@ -188,6 +173,8 @@ const SensorData = ({ initialData }: Props) => {
         </button>
 
         {/* If user exists, display profile picture */}
+        {/* Add logic to redirect to login if user doesn't exist */}
+
         <div className="m-auto items-start md:ml-auto">
           {user && (
             <div className="flex items-center ml-auto mr-10">

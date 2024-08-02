@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import LoadMap from "./LoadMap";
+import { SensorDataType, Coordinates } from "../../../types";
 import "../globals.css";
 
 type Props = {
@@ -8,19 +9,6 @@ type Props = {
   isOpen: Boolean;
   closeBar: () => void;
 };
-
-type SensorDataType = {
-  nodeID: string;
-  latitude: number;
-  longitude: number;
-  time: string;
-  temp: number;
-  humidity: number;
-  battery: number;
-  health: string;
-  employeeId?: string | null;
-};
-type Coordinates = [latitude: number, longitude: number];
 
 const SideBar = ({ sensorData, isOpen, closeBar }: Props) => {
   const [clickedSensor, setClickedSensor] = useState<Coordinates | null>(null);

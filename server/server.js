@@ -124,7 +124,6 @@ async function getAlphaSensor() {
     // get most recent update
     for (i = data.length - 1; i >= 0; i--) {
       if (data[i].lat && data[i].lon) {
-        console.log(data[i]);
         recentUpdate = data[i];
         break;
       }
@@ -169,6 +168,7 @@ async function getAlphaSensor() {
             latitude: recentUpdate.lat,
             longitude: recentUpdate.lon,
             time: recentUpdate.createdAt,
+            // Added placeholder values for now
             temp: 93, // change schema to accept null values
             humidity: 75,
             battery: 90,
